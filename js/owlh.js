@@ -34,8 +34,8 @@ function loadJSONdata() {
 
 function showConfig(oip, oname, oport, ouuid){
     document.getElementById('nidsform').style.display = "none";
-    document.getElementById('add-nid-top').innerHTML = "Add NID";
-    document.getElementById('add-nid-bottom').innerHTML = "Add NID";
+    document.getElementById('add-nid-top').innerHTML = "Add NIDS Node";
+    document.getElementById('add-nid-bottom').innerHTML = "Add NIDS Node`";
     document.getElementById('divconfigform').style.display = "block";
     document.getElementById('divconfigform').scrollIntoView();
 
@@ -78,7 +78,7 @@ async function PingNode(uuid, token) {
                 }else if (response.data.ping=='pong') {
                     document.getElementById('node-actions-'+uuid).style.color = "Dodgerblue";
                     document.getElementById(uuid+'-online').className = "badge bg-success align-text-bottom text-white";
-                    document.getElementById(uuid+'-online').innerHTML = "ON LINE";
+                    document.getElementById(uuid+'-online').innerHTML = "ONLINE";
                     document.getElementById('node-row-'+uuid).setAttribute("status", "online");
     
                     PingMonitor(uuid);
@@ -337,15 +337,15 @@ function GetAllNodes() {
                     var isEmpty = true;                
                     var html =  
                     '<div>'+
-                        '<span id="show-nodes-online" onclick="showNodes(\'online\')" class="badge bg-success align-text-bottom text-white float-right" style="cursor:pointer;" title="Show only online nodes">ON LINE</span>'+
-                        '<span id="show-nodes-offline" onclick="showNodes(\'offline\')" class="badge bg-danger align-text-bottom text-white float-right mr-1" style="cursor:pointer;" title="Show only offline nodes">OFF LINE</span>'+
-                        '<span id="show-nodes-all" onclick="showNodes(\'all\')" class="badge bg-primary align-text-bottom text-white float-right mr-1" style="cursor:pointer;" title="Show all nodes">ALL NODES</span>'+
-                        '<span id="sort-nodes-ip" onclick="sortTableIP()" sort="asc" class="sort-table asc badge bg-secondary align-text-bottom text-white float-left mr-1" style="cursor:pointer;"   title="Sort table by IP">Sort by IP</span>'+
-                        '<span id="sort-nodes-name" onclick="sortTableName()" sort="asc" class="sort-table badge bg-secondary align-text-bottom text-white float-left mr-1" style="cursor:pointer;" title="Sort table by Name">Sort by Name</span>'+
+                        '<span id="show-nodes-online" onclick="showNodes(\'online\')" class="badge bg-success align-text-bottom text-white p-2 float-right" style="cursor:pointer;" title="Show only online nodes">ONLINE</span>'+
+                        '<span id="show-nodes-offline" onclick="showNodes(\'offline\')" class="badge bg-danger align-text-bottom text-white p-2 float-right mr-1" style="cursor:pointer;" title="Show only offline nodes">OFF LINE</span>'+
+                        '<span id="show-nodes-all" onclick="showNodes(\'all\')" class="badge bg-primary align-text-bottom text-white float-right p-2 mr-1" style="cursor:pointer;" title="Show all nodes">ALL NODES</span>'+
+                        '<span id="sort-nodes-ip" onclick="sortTableIP()" sort="asc" class="sort-table asc badge bg-secondary align-text-bottom p-2 text-white float-left mr-1" style="cursor:pointer;"   title="Sort table by IP">Sort by IP</span>'+
+                        '<span id="sort-nodes-name" onclick="sortTableName()" sort="asc" class="sort-table badge bg-secondary align-text-bottom p-2 text-white float-left mr-1" style="cursor:pointer;" title="Sort table by Name">Sort by Name</span>'+
                     '</div>'+
                     '<br>'+
-                    '<table class="table table-hover" style="table-layout: fixed" id="node-table"> ' +
-                        '<thead> ' +
+                    '<table class="table table-striped mt-5" style="table-layout: fixed" id="node-table"> ' +
+                        '<thead class="thead-dark"> ' +
                             '<tr>  ' +
                                 '<th scope="col" width="5%"></th> ' +
                                 '<th id="node-table-name-column" scope="col" width="30%" align="left">Name</th> ' +
@@ -354,7 +354,7 @@ function GetAllNodes() {
                                 '<th scope="col" width="25%">Actions</th>  ' +
                             '</tr> ' +
                         '</thead> ' +
-                        '<tbody id="node-table-tbody">';
+                        '<tbody id="node-table-tbody" >';
                             for (node in nodes) {
                                 isEmpty = false;
                                 if (nodes[node]['port'] != undefined) {
@@ -367,7 +367,7 @@ function GetAllNodes() {
                                 
                                 html = html + '<tr class="node-search" id="node-row-'+node+'" name="'+nodes[node]['name']+'" ip="'+nodes[node]['ip']+'" status="offline">'+
                                     '<td></td>'+
-                                    '<td width="33%" style="word-wrap: break-word;" class="align-middle"> <strong>' + nodes[node]['name'] + '</strong>'+
+                                    '<td scope="row width="33%" style="word-wrap: break-word;" class="align-middle"> <strong>' + nodes[node]['name'] + '</strong>'+
                                         '<p class="text-muted">' + nodes[node]['ip'] + '</p>'+
                                         // '<i class="fas fa-code" title="Ruleset Management"></i> '+
                                         '<div id="node-info-'+node+'">'+
@@ -399,15 +399,15 @@ function GetAllNodes() {
                                     '<td></td>'+        
                                     '<td width="33%" style="word-wrap: break-word;" class="align-middle"> '+                                   
                                         '<span style="font-size: 15px; color: Grey;" id="node-actions-'+uuid+'">'+                                                                          
-                                            '<i id="node-services-'+uuid+'" class="fas fa-box-open" style="cursor: pointer;" title="node services configuration" onclick="showServicesConfig(\''+uuid+'\', \''+nodes[node]['name']+'\');"></i> | Node services configuration' +
-                                            '<br><i id="node-monitor-'+uuid+'" class="fas fa-desktop" style="cursor: pointer;" id="details-'+uuid+'" title="Node monitoring" onclick="ShowMonitoring(\''+uuid+'\', \''+nodes[node]['name']+'\');"></i> | Node monitoring' +
-                                            '<br><i id="node-config-'+uuid+'" class="fas fa-cog" style="cursor: pointer;" title="Edit node configuration" onclick="loadEditURL(\''+node+'\', \'main.conf\', \''+nodes[node]['name']+'\')"></i> | Edit node configuration' +
-                                            '<br><i id="node-files-'+uuid+'" class="fas fa-arrow-alt-circle-down" style="cursor: pointer;" title="See node files" onclick="loadFilesURL(\''+uuid+'\', \''+nodes[node]['name']+'\')"></i> | See node files' +
-                                            '<br><i id="node-change-'+uuid+'" class="fas fa-clipboard-list" style="cursor: pointer;" title="Change control data" onclick="loadChangeControl(\''+uuid+'\', \'node\', \''+nodes[node]['name']+'\')"></i> | Change control' +
-                                            '<br><i id="node-incident-'+uuid+'" class="fas fa-archive" style="cursor: pointer;" title="Incident data" onclick="loadIncidentMaster(\''+uuid+'\', \'node\', \''+nodes[node]['name']+'\')"></i> | Incident data' +
+                                            '<i id="node-services-'+uuid+'" class="fas fa-box-open" style="cursor: pointer; color:black;" title="node services configuration" onclick="showServicesConfig(\''+uuid+'\', \''+nodes[node]['name']+'\');"> | Node services configuration |</i> ' +
+                                            '<br><i id="node-monitor-'+uuid+'" class="fas fa-desktop" style="cursor: pointer;  color:black;" id="details-'+uuid+'" title="Node monitoring" onclick="ShowMonitoring(\''+uuid+'\', \''+nodes[node]['name']+'\');"> | Node monitoring |</i> ' +
+                                            '<br><i id="node-config-'+uuid+'" class="fas fa-cog" style="cursor: pointer; color:black;" title="Edit node configuration" onclick="loadEditURL(\''+node+'\', \'main.conf\', \''+nodes[node]['name']+'\')"> | Edit node configuration |</i> ' +
+                                            '<br><i id="node-files-'+uuid+'" class="fas fa-arrow-alt-circle-down" style="cursor: pointer; color:black;" title="See node files" onclick="loadFilesURL(\''+uuid+'\', \''+nodes[node]['name']+'\')"> | See node files |</i>' +
+                                            '<br><i id="node-change-'+uuid+'" class="fas fa-clipboard-list" style="cursor: pointer; color:black;" title="Change control data" onclick="loadChangeControl(\''+uuid+'\', \'node\', \''+nodes[node]['name']+'\')"> | Change control |</i>' +
+                                            '<br><i id="node-incident-'+uuid+'" class="fas fa-archive" style="cursor: pointer; color:black;" title="Incident data" onclick="loadIncidentMaster(\''+uuid+'\', \'node\', \''+nodes[node]['name']+'\')"> | Incident data |</i>' +
                                             '<div style="color:dodgerblue; border-top: 1px solid">'+
-                                                '<i id="node-modify-'+uuid+'" class="fas fa-cogs" style="cursor: pointer;" title="Modify node details" onclick="showConfig('+"'"+nodes[node]['ip']+"','"+nodes[node]['name']+"','"+nodes[node]['port']+"','"+uuid+"'"+');"></i> | Modify node' +
-                                                '<br><i class="fas fa-trash-alt" style="color: red; cursor: pointer;" title="Delete Node" data-toggle="modal" data-target="#modal-window" onclick="deleteNodeModal('+"'"+node+"'"+', '+"'"+nodes[node]['name']+"'"+');"></i> | Delete node'+
+                                                '<i id="node-modify-'+uuid+'" class="fas fa-cogs" style="cursor: pointer; color:black;" title="Modify node details" onclick="showConfig('+"'"+nodes[node]['ip']+"','"+nodes[node]['name']+"','"+nodes[node]['port']+"','"+uuid+"'"+');"> | Modify node |</i>' +
+                                                '<br><i class="fas fa-trash-alt" style="color: red; cursor: pointer;" title="Delete Node" data-toggle="modal" data-target="#modal-window" onclick="deleteNodeModal('+"'"+node+"'"+', '+"'"+nodes[node]['name']+"'"+');"> | Delete node |</i>'+
                                             '</div>';
                                         '</span>'+
                                     '</td> ' +
@@ -589,8 +589,8 @@ function formAddNids(){
         nform.scrollIntoView();
     } else {
         nform.style.display = "none";
-        addnidsbot.innerHTML = "Add NID";
-        addnidstop.innerHTML = "Add NID";
+        addnidsbot.innerHTML = "Add NIDS Node";
+        addnidstop.innerHTML = "Add NIDS Node";
     }
 }
     

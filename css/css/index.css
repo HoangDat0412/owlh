@@ -1,0 +1,43 @@
+.containbg{
+    background-image: url('../../img/backgroundlogin.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* filter: brightness(0.2); */
+    /* z-index: -9999; */
+}
+.navbar-nav .nav-item .nav-link{
+    color: white !important;
+    margin-left: 20px;
+}
+.navbar-nav .nav-item .nav-link:hover{
+    background-color: rgb(139, 160, 255);
+    border-radius: 5px;
+}
+.typewriting{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.button_select > a{
+    border: 2px solid rgb(255, 255, 255) !important;
+    /* background-color: red; */
+    margin-top: 150px;
+    border-radius: 50px;
+    color: rgb(255, 255, 255) !important;
+}
+.button_select > a:hover{
+    background-color: cyan;
+    color: black !important;
+}
+.phu{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: -9999;
+    width: 100%;
+    height: 100%;
+}

@@ -66,3 +66,5 @@ function LoadConfig(){
         document.location.href='config.html';
     }
 }
+
+
