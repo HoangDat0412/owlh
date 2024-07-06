@@ -1,4 +1,0 @@
-<div class="coolinput mb-2 mr-sm-2 mb-sm-0">
-                            <label for="input" class="text">Node name:</label>
-                            <input type="text" class="form-control" id="nodename" placeholder="node-name" required>
-                        </div>
