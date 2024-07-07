@@ -12,7 +12,7 @@ function modalChangePasswordLogin(){
             '</div>'+
             
             '<div class="modal-body">'+ 
-                '<p>Insert new password:</p>'+
+                '<p>Insert new password sdasda:</p>'+
                 '<input type="password" class="form-control" id="user-change-password" placeholder="new password..."><br>'+
                 '<p>Verify new password:</p>'+
                 '<input type="password" class="form-control" id="user-verify-password" placeholder="Verify password..."><br>'+
