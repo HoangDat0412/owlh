@@ -1,0 +1,9 @@
+.navbar-nav .nav-item.active {
+    border-bottom: 2px solid #ffffff;
+}
+.background{
+    background-image: url(../../img/backgroundlogin.jpg);
+    object-fit: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

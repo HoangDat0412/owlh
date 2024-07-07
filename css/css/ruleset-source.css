@@ -1,0 +1,37 @@
+.add_header {
+    border: none;
+    display: flex;
+    padding: 0.75rem 1.5rem;
+    background-image: linear-gradient(to right, #051937, #164067, #236b9a, #2c9bcd, #36ceff);
+    color: #ffffff;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 700;
+    text-align: center;
+    justify-content: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 0.5rem;
+    user-select: none;
+    gap: 0.75rem;
+    box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+    transition: all .6s ease;
+    cursor: pointer;
+    margin-bottom: 20px;
+    /* position: absolute; */
+  }
+  
+  .add_header:hover {
+    box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+  }
+  
+  .add_header:focus,button:active {
+    opacity: .85;
+    box-shadow: none;
+  }
+  
+  .add_header .fas {
+    font-size: 20px;
+    
+  }
