@@ -8,7 +8,9 @@
     <meta name="author" content="">
     <link rel="icon" href="img/favicon.ico">
 
-    <title>OwlH Master</title>
+    <link rel="stylesheet" href="./css/css/node.css">
+    <title>Fly protect Nodes</title>
+
 
     <!-- Bootstrap core CSS -->
     <link href="css/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,25 +24,27 @@
 
   <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <img class="mr-3" src="img/owlhblack.png" alt="" height="30"><a class="navbar-brand mr-auto mr-lg-0"
-            href="nodes.html"><small>Master </small><i id="menu-title" class="text-warning"></i> | </a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark"
+    style="background-image: linear-gradient(to right, #051937, #164067, #236b9a, #2c9bcd, #36ceff);">
+    <img class="mr-3 ml-5" src="img/logo.jpg" alt="" height="30">
+    <a class="navbar-brand mr-auto mr-lg-0" href="/"><i class="text-warning">Fly protect</i> | </a>
+
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button> -->
     
     
-        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
+        <div class="navbar-collapse offcanvas-collapse ml-4" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto ml-2">
                 <li class="nav-item">
-                    <a class="nav-link" href="nodes.html">Nodes</a>
+                    <a class="nav-link" href="/">Nodes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="groups.html">Groups</a>
+                    <a class="nav-link ml-2" href="groups.html">Groups</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="rulesets.html">Open Rules</span></a>
+                    <a class="nav-link ml-2" href="rulesets.html">Open Rules</span></a>
                 </li>
                 <li class="nav-item">
                     <!-- <a class="nav-link" href="response.html">Adapt & Response</a> -->
@@ -49,24 +53,27 @@
                     <a class="nav-link" href="kibana.html">Kibana</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="master.html">Master</a>
+                    <a class="nav-link ml-2" href="master.html">Master</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="config.html">Config</a>
+                    <a class="nav-link ml-2" href="config.html">Config</a>
                 </li>
             </ul>
                     <!-- loged button -->
         <div class="dropdown mr-4">
-          <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="loger-user-name" value="">Loged as: </b></button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuUser">
-            <a class="dropdown-item" style="cursor:pointer;" onclick="modalChangePasswordLogin()">Change Password</a>
+            <button class="btn btn-outline-dark dropdown-toggle mr-5" type="button" id="dropdownMenuUser"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="loger-user-name" value="">
+            </b></button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuUser">
+            <a class="dropdown-item" style="cursor:pointer;" onclick="modalChangePasswordLogin()">Change
+                Password</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" style="cursor:pointer;" onclick="Logout()">Logout</a>
-          </div>
         </div>
-        <!-- current version -->
+        </div>
+        <!-- current version
         <p id="current-version-text" class="text-justify align-middle text-white">v:</p><p class="text-justify text-white mr-4" id="current-version-show"></p>
-        </div>
+        </div> -->
     </nav>
 
 
@@ -77,8 +84,9 @@
         </div>
 
         <div>
-            <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-low-blue rounded shadow-sm">
-            <img class="mr-3" src="img/owlhblack.png" alt="" height="48">
+            <div class="d-flex align-items-center p-3 my-3 text-white-50 background rounded shadow-sm">
+                <img class="mr-3" src="img/logo.jpg" alt="" height="48">
+
             <div class="lh-100">
                 <h3 class="mb-0 text-white lh-100">Configuration</h3>
                 <small>Configuration panel</small>

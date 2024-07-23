@@ -36,11 +36,11 @@ function LoadFileLastLines() {
     var line = url.searchParams.get("line");
     var path = url.searchParams.get("path");
 
-    if (line != "none"){
-        document.getElementById('node-config-title').innerHTML = "Load last "+line+" lines from file: "+path;
-    }else{
-        document.getElementById('node-config-title').innerHTML = "Load file: "+path;
-    }
+    // if (line != "none"){
+    //     document.getElementById('node-config-title').innerHTML = "Load last "+line+" lines from file: "+path;
+    // }else{
+    //     document.getElementById('node-config-title').innerHTML = "Load file: "+path;
+    // }
     var ipmaster = document.getElementById('ip-master').value;
     var portmaster = document.getElementById('port-master').value;
     var nodeurl = 'https://' + ipmaster + ':' + portmaster + '/v1/node/wazuh/loadLines';
@@ -82,7 +82,7 @@ function LoadFileLastLines() {
             }else if (line != "none") {
                 document.getElementById('inputTextTailLines').disabled='true';
                 document.getElementById('inputTextTailLines').style.backgroundColor='white';
-                document.getElementById('upper-buttons-file').innerHTML = '<button type="button" class="btn btn-secondary" onclick="closeCurrentFile()">Close</button>'; 
+                // document.getElementById('upper-buttons-file').innerHTML = '<button type="button" class="btn btn-secondary" onclick="closeCurrentFile()">Close</button>'; 
                 document.getElementById('lower-buttons-file').innerHTML = '<button type="button" class="btn btn-secondary" onclick="closeCurrentFile()">Close</button>'; 
                 document.getElementById('inputTextTailLines').value = response.data["result"];
             }else{

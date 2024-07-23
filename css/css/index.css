@@ -27,12 +27,14 @@
     border: 2px solid rgb(255, 255, 255) !important;
     /* background-color: red; */
     margin-top: 150px;
-    border-radius: 50px;
+    text-transform: uppercase;
+    border-radius: 5px;
     color: rgb(255, 255, 255) !important;
 }
 .button_select > a:hover{
     background-color: cyan;
     color: black !important;
+    transition: 0.5s all;
 }
 .phu{
     background-color: rgba(0, 0, 0, 0.5);

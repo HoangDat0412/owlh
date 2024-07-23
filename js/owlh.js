@@ -102,7 +102,7 @@ async function PingNode(uuid, token) {
                     document.getElementById('node-actions-'+uuid).style.cursor = "default";
                     //set node status to OFFLINE
                     document.getElementById(uuid+'-online').className = "badge bg-danger align-text-bottom text-white";
-                    document.getElementById(uuid+'-online').innerHTML = "OFFLINE";
+                    document.getElementById(uuid+'-online').innerHTML = "OFF LINE";
                     //Set attr to offline
                     document.getElementById('node-row-'+uuid).setAttribute("status", "offline");
                 }   
@@ -338,7 +338,7 @@ function GetAllNodes() {
                     var html =  
                     '<div>'+
                         '<span id="show-nodes-online" onclick="showNodes(\'online\')" class="badge bg-success align-text-bottom text-white p-2 float-right" style="cursor:pointer;" title="Show only online nodes">ONLINE</span>'+
-                        '<span id="show-nodes-offline" onclick="showNodes(\'offline\')" class="badge bg-danger align-text-bottom text-white p-2 float-right mr-1" style="cursor:pointer;" title="Show only offline nodes">OFFLINE</span>'+
+                        '<span id="show-nodes-offline" onclick="showNodes(\'offline\')" class="badge bg-danger align-text-bottom text-white p-2 float-right mr-1" style="cursor:pointer;" title="Show only offline nodes">OFF LINE</span>'+
                         '<span id="show-nodes-all" onclick="showNodes(\'all\')" class="badge bg-primary align-text-bottom text-white float-right p-2 mr-1" style="cursor:pointer;" title="Show all nodes">ALL NODES</span>'+
                         '<span id="sort-nodes-ip" onclick="sortTableIP()" sort="asc" class="sort-table asc badge bg-secondary align-text-bottom p-2 text-white float-left mr-1" style="cursor:pointer;"   title="Sort table by IP">Sort by IP</span>'+
                         '<span id="sort-nodes-name" onclick="sortTableName()" sort="asc" class="sort-table badge bg-secondary align-text-bottom p-2 text-white float-left mr-1" style="cursor:pointer;" title="Sort table by Name">Sort by Name</span>'+
@@ -354,7 +354,7 @@ function GetAllNodes() {
                                 '<th scope="col" width="25%">Actions</th>  ' +
                             '</tr> ' +
                         '</thead> ' +
-                        '<tbody id="node-table-tbody">';
+                        '<tbody id="node-table-tbody" >';
                             for (node in nodes) {
                                 isEmpty = false;
                                 if (nodes[node]['port'] != undefined) {

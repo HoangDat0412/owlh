@@ -7,8 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="./css/css/node.css">
 
-    <title>OwlH Master</title>
+    <title>Fly protect Nodes</title>
+
 
     <!-- Bootstrap core CSS -->
     <link href="css/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,46 +24,52 @@
 
   <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <img class="mr-3" src="img/owlhblack.png" alt="" height="30"><a class="navbar-brand mr-auto mr-lg-0"
-            href="nodes.html"><small>Master </small><i id="menu-title" class="text-warning"></i> | </a>  
-    
-        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark"
+        style="background-image: linear-gradient(to right, #051937, #164067, #236b9a, #2c9bcd, #36ceff);">
+        <img class="mr-3 ml-5" src="img/logo.jpg" alt="" height="30">
+        <a class="navbar-brand mr-auto mr-lg-0" href="/"><i class="text-warning">Fly protect</i> | </a>
+
+
+
+        <div class="navbar-collapse offcanvas-collapse ml-4" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="nodes.html">Nodes</a>
+                    <a class="nav-link" href="/">Nodes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="groups.html">Groups</a>
+                    <a class="nav-link ml-2" href="groups.html">Groups</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="rulesets.html">Open Rules</span></a>
+                    <a class="nav-link ml-2" href="rulesets.html">Open Rules</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ml-2">
                     <!-- <a class="nav-link" href="response.html">Adapt & Response</a> -->
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="kibana.html">Kibana</a>
                 </li> -->
-                <li class="nav-item active">
+                <li class="nav-item active ml-2">
                     <a class="nav-link" href="master.html">Master</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ml-2">
                     <a class="nav-link" href="config.html">Config</a>
                 </li>
             </ul>
                     <!-- loged button -->
         <div class="dropdown mr-4">
-          <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="loger-user-name" value="">Loged as: </b></button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuUser">
-            <a class="dropdown-item" style="cursor:pointer;" onclick="modalChangePasswordLogin()">Change Password</a>
+            <button class="btn btn-outline-dark dropdown-toggle mr-5" type="button" id="dropdownMenuUser"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="loger-user-name" value="">
+            </b></button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuUser">
+            <a class="dropdown-item" style="cursor:pointer;" onclick="modalChangePasswordLogin()">Change
+                Password</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" style="cursor:pointer;" onclick="Logout()">Logout</a>
-          </div>
         </div>
-        <!-- current version -->
+        </div>
+        <!-- current version
         <p id="current-version-text" class="text-justify align-middle text-white">v:</p><p class="text-justify text-white mr-4" id="current-version-show"></p>
-        </div>
+        </div> -->
     </nav>
 
 

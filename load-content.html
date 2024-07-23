@@ -7,8 +7,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="./css/css/node.css">
+    <link rel="stylesheet" href="./css/css/tableLog.css">
+    <link rel="stylesheet" href="./css/css/load-content.css">
 
-    <title>OwlH Master</title>
+    <title>Fly protect</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,29 +21,45 @@
 
     <!-- Custom styles for this template -->
     <link href="css/offcanvas.css" rel="stylesheet">
+
+    <!-- DataTable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.0/css/dataTables.dataTables.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/searchpanes/2.3.1/js/dataTables.searchPanes.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/searchpanes/2.3.1/js/searchPanes.dataTables.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/select/2.0.3/js/dataTables.select.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/select/2.0.3/js/select.dataTables.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+  
+    
   </head>
 
   <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <img class="mr-3" src="img/owlhblack.png" alt="" height="30"><a class="navbar-brand mr-auto mr-lg-0"
-            href="nodes.html"><small>Master </small><i id="menu-title" class="text-warning"></i> | </a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark"
+        style="background-image: linear-gradient(to right, #051937, #164067, #236b9a, #2c9bcd, #36ceff);">
+        <img class="mr-3 ml-5" src="img/logo.jpg" alt="" height="30">
+        <a class="navbar-brand mr-auto mr-lg-0" href="nodes.html"><i class="text-warning">Fly protect</i> | </a>
+  
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button> -->
     
     
-        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
+        <div class="navbar-collapse offcanvas-collapse ml-4" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto ml-2">
                 <li class="nav-item active">
-                    <a class="nav-link" href="nodes.html">Nodes</a>
+                    <a class="nav-link" href="/">Nodes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="groups.html">Groups</a>
+                    <a class="nav-link ml-2" href="groups.html">Groups</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="rulesets.html">Open Rules</span></a>
+                    <a class="nav-link ml-2" href="rulesets.html">Open Rules</span></a>
                 </li>
                 <li class="nav-item">
                     <!-- <a class="nav-link" href="response.html">Adapt & Response</a> -->
@@ -49,24 +68,26 @@
                     <a class="nav-link" href="kibana.html">Kibana</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="master.html">Master</a>
+                    <a class="nav-link ml-2" href="master.html">Master</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="config.html">Config</a>
+                    <a class="nav-link ml-2" href="config.html">Config</a>
                 </li>
             </ul>
                     <!-- loged button -->
         <div class="dropdown mr-4">
-          <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="loger-user-name" value="">Loged as: </b></button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuUser">
-            <a class="dropdown-item" style="cursor:pointer;" onclick="modalChangePasswordLogin()">Change Password</a>
+            <button class="btn btn-outline-dark dropdown-toggle mr-5" type="button" id="dropdownMenuUser"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="loger-user-name" value="">
+            </b></button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuUser">
+            <a class="dropdown-item" style="cursor:pointer;" onclick="modalChangePasswordLogin()">Change
+                Password</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" style="cursor:pointer;" onclick="Logout()">Logout</a>
-          </div>
         </div>
-        <!-- current version -->
+        <!-- current version
         <p id="current-version-text" class="text-justify align-middle text-white">v:</p><p class="text-justify text-white mr-4" id="current-version-show"></p>
-        </div>
+        </div> -->
     </nav>
 
 
@@ -76,12 +97,12 @@
         <div id="floating-alert" style="top: 5px;">
         </div>
 
-        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-low-blue rounded shadow-sm">
-            <img class="mr-3" src="img/owlhblack.png" alt="" height="48">
+        <!-- <div class="d-flex align-items-center p-3 my-3 text-white-50 background rounded shadow-sm">
+            <img class="mr-3" src="img/logo.jpg" alt="" height="48">
             <div class="lh-100">
-                <h3 class="mb-0 text-white lh-100" id="node-config-title">Tail lines</h3>
             </div>
-        </div>
+        </div> -->
+        <h3 class="mb-0 text-white lh-100" id="node-config-title"></h3>
 
         <!-- ProgressBar -->            
         <div id="progressBar-options-div" class="progress" style="display:none;">
@@ -100,7 +121,9 @@
             <tr><td height="20"></td></tr>
             <tr style="width: 100%; height: 500px">
                 <td>
-                    <textarea id="inputTextTailLines" class="form-control" style="width: 100%; height: 650px"></textarea>
+                    <textarea id="inputTextTailLines" class="form-control" style="width: 100%; height: 650px">
+                        
+                    </textarea>
                 </td>
             </tr>
             <tr><td height="20"></td></tr>
@@ -112,6 +135,33 @@
             </tr>
             <tr><td height="20"></td></tr>
         </table>
+
+
+
+        <!-- TABLE TEST -->
+        <!-- <p><button id="button">Delete selected row</button></p> -->
+        <div class="table-container" id="table1_wrapper">
+            <button class="float-right mb-3 p-2" id="filterBtn" style="border-radius: 5px; color:#333232; cursor:pointer"> 
+                <i class="fas fa-filter"></i> 
+                FILTER
+            </button>
+            <table id="table1" class="display cell-border stripe" style="width:100%">
+            </table>
+        </div>
+        
+       <!-- Popup Filter -->
+    <div id="filterPopup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Filter</h2>
+            <div class="filter-options filter-container ml-5" id="filterContainer">
+            </div>
+            <button id="addFilterBtn" class="add-filter">+ Add a filter</button>
+        </div>
+    </div>
+        
+            <br> <br>
+
         
         <!-- Footer -->
         <div id="footer"></div>
@@ -129,6 +179,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.datatables.net/2.1.0/js/dataTables.js"></script>
     <script src="js/axios/dist/axios.js"></script> 
     <script src="js/jquery-3.4.1.js"></script>
     <script src="css/dist/js/bootstrap.min.js"></script>
@@ -139,6 +190,7 @@
     <script src="js/loadTitle.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/loginButton.js"></script>
+    <script src="./js/dataTable/dataTable.js"></script>
   </body>
 </html>
 
