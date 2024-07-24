@@ -34,7 +34,7 @@ function loadMonitor() {
     document.getElementById('node-config-title').innerHTML = name;
 
     var html = `
-     //CHARTS
+     <!-- CHARTS -->
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0" style="color: black;" onclick="showActions('monitor', '${uuid}')"><b>Node monitor</b> <i class="fas fa-sort-down" id="monitor-form-icon-${uuid}"></i></h6>
         <span id="monitor-form-${uuid}" style="display:block"><br>
@@ -61,14 +61,14 @@ function loadMonitor() {
         </span>
     </div>
 
-    //FILES
+    <!-- FILES -->
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-4 mb-0" style="color: black;" onclick="showActions('files', '${uuid}')"><b>Node log files</b>
         <i class="fas fa-sort-down" id="files-form-icon-${uuid}"></i>
         <button type="button" class="style_button float-right" style="font-size: 15px;" onclick="AddMonitorFileModal('${uuid}')">Add file</button>
         </h6>
         <span id="files-form-${uuid}" style="display:block"><br>
-            <table width="100%" style="table-layout: fixed" class="table table-hover">
+            <table width="100%" id="table_node_monitor" style="table-layout: fixed" class="display">
                 <thead class="thead-dark">
                     <tr>
                         <th>Path</th>
@@ -79,6 +79,7 @@ function loadMonitor() {
                     </tr>
                 </thead>
                 <tbody id="file-data-monitor">
+
                 </tbody>
             </table>
         </span>
@@ -99,46 +100,48 @@ function loadMonitor() {
 
 function AddMonitorFileModal(uuid) {
     var modalWindow = document.getElementById('modal-window');
-    modalWindow.innerHTML =
-        '<div class="modal-dialog">' +
-        '<div class="modal-content">' +
+    modalWindow.innerHTML = `
+    <div class="modal-dialog">
+    <div class="modal-content">
 
-        '<div class="modal-header" style="word-break: break-all;">' +
-        '<h4 class="modal-title">Add new file</h4>' +
-        '<button type="button" class="close" id="add-file-modal-cross">&times;</button>' +
-        '</div>' +
+        <div class="modal-header" style="word-break: break-all;">
+            <h4 class="modal-title">Add new file</h4>
+            <button type="button" class="close" id="add-file-modal-cross">&times;</button>
+        </div>
 
-        '<div class="modal-body" style="word-break: break-all;">' +
-        '<p>Insert the path for add this file:</p>' +
-        '<input type="text" class="form-control" id="new-file-path">' +
-        '<br>' +
-        '<p>File rotation:</p>' +
-        '<div class="custom-control custom-radio custom-control-inline">' +
-        '<input class="form-check-input" type="radio" name="exampleRadios" id="check-rotation-enabled" value="enabled" checked>' +
-        '<label class="form-check-label" for="check-rotation-enabled">Enabled</label> &nbsp' +
-        '</div> &nbsp' +
-        '<div class="custom-control custom-radio custom-control-inline">' +
-        '<input class="form-check-input" type="radio" name="exampleRadios" id="check-rotation-disabled" value="disabled">' +
-        '<label class="form-check-label" for="check-rotation-disabled">Disabled</label>' +
-        '</div>' +
-        '<br><br>' +
-        '<p>Maximum rotation file size (M for Megas, G for Gigas or T for Teras):</p>' +
-        '<input type="text" class="form-control" id="size-file-path" value="5G">' +
-        '<p>Maximum rotation file lines:</p>' +
-        '<input type="text" class="form-control" id="lines-file-path" value="1000000000">' +
-        '<p>Maximum rotation files:</p>' +
-        '<input type="text" class="form-control" id="number-file-path" value="7">' +
-        '<p>Maximum rotation days:</p>' +
-        '<input type="text" class="form-control" id="days-file-path" value="7">' +
-        '</div>' +
+        <div class="modal-body" style="word-break: break-all;">
+            <p>Insert the path for add this file:</p>
+            <input type="text" class="form-control" id="new-file-path">
+            <br>
+            <p>File rotation:</p>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="check-rotation-enabled" value="enabled" checked>
+                <label class="form-check-label" for="check-rotation-enabled">Enabled</label> &nbsp
+            </div> &nbsp
+            <div class="custom-control custom-radio custom-control-inline">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="check-rotation-disabled" value="disabled">
+                <label class="form-check-label" for="check-rotation-disabled">Disabled</label>
+            </div>
+            <br><br>
+            <p>Maximum rotation file size (M for Megas, G for Gigas or T for Teras):</p>
+            <input type="text" class="form-control" id="size-file-path" value="5G">
+            <p>Maximum rotation file lines:</p>
+            <input type="text" class="form-control" id="lines-file-path" value="1000000000">
+            <p>Maximum rotation files:</p>
+            <input type="text" class="form-control" id="number-file-path" value="7">
+            <p>Maximum rotation days:</p>
+            <input type="text" class="form-control" id="days-file-path" value="7">
+        </div>
 
-        '<div class="modal-footer" id="sync-node-footer-btn" style="word-break: break-all;">' +
-        '<button type="button" class="btn btn-secondary" id="add-file-modal-close">Cancel</button>' +
-        '<button type="button" class="btn btn-primary" id="add-file-modal">Add</button>' +
-        '</div>' +
+        <div class="modal-footer" id="sync-node-footer-btn" style="word-break: break-all;">
+            <button type="button" class="btn btn-secondary" id="add-file-modal-close">Cancel</button>
+            <button type="button" class="btn btn-primary" id="add-file-modal">Add</button>
+        </div>
 
-        '</div>' +
-        '</div>';
+    </div>
+</div>
+    `
+        
     $('#modal-window').modal("show");
     $('#add-file-modal').click(function () { AddMonitorFile(uuid, document.getElementById('new-file-path').value.trim()); });
     $('#add-file-modal-close').click(function () { $('#modal-window').modal("hide"); });
@@ -366,62 +369,66 @@ function PingMonitorFiles(uuid) {
                             if (response.data[file]["size"] >= 1048576 && response.data[file]["size"] < 1073741824) { html = html + '<span id="monitor-file-status-' + file + '" class="badge badge-pill bg-success align-text-bottom text-white">' + parseFloat(response.data[file]["size"] / 1048576).toFixed(2) + ' MB</span>'; }
                             if (response.data[file]["size"] >= 1073741824) { html = html + '<span id="monitor-file-status-' + file + '" class="badge badge-pill bg-success align-text-bottom text-white">' + parseFloat(response.data[file]["size"] / 1073741824).toFixed(2) + ' GB</span>'; }
                         }
-                        html = html + '</td>';
+                        html += '</td>';
                         //     '<td style="color:grey; word-wrap: break-word;">';
                         if (response.data[file]["size"] >= 0) {
-                            html = html + 
-                            '<td >' +
-                                '<span style="cursor:pointer;" class="badge badge-pill bg-secondary align-text-bottom text-white" onclick="LoadPageLastLines(\'' + uuid + '\', \'10\', \'' + response.data[file]["path"] + '\')">10</span> &nbsp' +
-                                '<span style="cursor:pointer;" class="badge badge-pill bg-secondary align-text-bottom text-white" onclick="LoadPageLastLines(\'' + uuid + '\', \'50\', \'' + response.data[file]["path"] + '\')">50</span> &nbsp' +
-                                '<span style="cursor:pointer;" class="badge badge-pill bg-secondary align-text-bottom text-white" onclick="LoadPageLastLines(\'' + uuid + '\', \'100\', \'' + response.data[file]["path"] + '\')">100</span> &nbsp' 
-                            + '</td>'
+                            html += `
+                            <td>
+    <span style="cursor:pointer;" class="badge badge-pill bg-secondary align-text-bottom text-white" onclick="LoadPageLastLines('${uuid}', '10', '${response.data[file]["path"]}')">10</span> &nbsp
+    <span style="cursor:pointer;" class="badge badge-pill bg-secondary align-text-bottom text-white" onclick="LoadPageLastLines('${uuid}', '50', '${response.data[file]["path"]}')">50</span> &nbsp
+    <span style="cursor:pointer;" class="badge badge-pill bg-secondary align-text-bottom text-white" onclick="LoadPageLastLines('${uuid}', '100', '${response.data[file]["path"]}')">100</span> &nbsp
+</td>  
+                            `
                         }
-                        html = html + 
-                        '<td style=" align-items: center; justify-content: space-around; display:flex">'+
-                            '<i class="fas fa-exchange-alt" style="color:dodgerblue;cursor: pointer;" title="Change rotation file status" onclick="ChangeRotationStatus(\'' + uuid + '\', \'' + file + '\', \'' + response.data[file]["rotate"] + '\')"></i> &nbsp' +
-                            '<i class="fas fa-sync-alt" style="color:dodgerblue;cursor: pointer;" title="Reload files" onclick="loadMonitor()"></i> &nbsp' +
-                            '<i class="fas fa-edit" style="color:dodgerblue;cursor: pointer;" title="Edit rotation file values" onclick="showModifyRotation(\'' + file + '\')"></i> &nbsp' +
-                            '<i class="fas fa-trash-alt" style="color:red;cursor: pointer;" onclick="ModalDeleteMonitorFile(\'' + uuid + '\', \'' + file + '\', \'' + response.data[file]["path"] + '\')"></i>' 
-                        + '</td>' +
-                        '</tr>' +
-                            '<tr id="edit-file-' + file + '" style="display:none;" bgcolor="peachpuff">' +
-                                '<td colspan="3">' +
-                                    '<div class="form-row">' +
-                                    '<div class="col">' +
-                                        'Path: <input class="form-control" id="rotation-path-' + file + '" value="' + response.data[file]["path"] + '">' +
-                                    '</div>' +
-                                    '<div class="col">' +
-                                        'Maximum file size: <input class="form-control" id="rotation-size-' + file + '" value="' + response.data[file]["maxSize"] + '">' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '<div class="form-row">' +
-                                        '<div class="col">' +
-                                            'Maximum file lines: <input class="form-control" id="rotation-lines-' + file + '" value="' + response.data[file]["maxLines"] + '">' +
-                                        '</div>' +
-                                        '<div class="col">' +
-                                            'Maximum rotation files: <input class="form-control" id="rotation-files-' + file + '" value="' + response.data[file]["maxFiles"] + '">' +
-                                        '</div>' +
-                                        '</div>' +
-                                            '<div class="form-row">' +
-                            '<div class="col">' +
-                            'Maximum file days rotation: <input class="form-control" id="rotation-days-' + file + '" value="' + response.data[file]["maxDays"] + '">' +
-                            '</div>' +
-                            '</div>' +
-                            '</td>' +
-                            '<td>' +
-                            '<div class="form-row text-center">' +
-                            '<div class="col">' +
-                            '<button class="btn btn-primary float-right" onclick="EditRotation(\'' + uuid + '\', \'' + file + '\')">Save</button>' +
-                            '</div>' +
-                            '</div>' +
-                            '<br>' +
-                            '<div class="form-row text-center">' +
-                            '<div class="col">' +
-                            '<button class="btn btn-danger float-right" onclick="hideEditRotation(\'' + file + '\')">Cancel</button>' +
-                            '</div>' +
-                            '</div>' +
-                            '</td>' +
-                            '</tr>';
+               
+                        html += `
+                        <td style="align-items: center; justify-content: space-around; display:flex">
+                        <i class="fas fa-exchange-alt" style="color:dodgerblue;cursor: pointer;" title="Change rotation file status" onclick="ChangeRotationStatus('${uuid}', '${file}', '${response.data[file]["rotate"]}')"></i> &nbsp
+                        <i class="fas fa-sync-alt" style="color:dodgerblue;cursor: pointer;" title="Reload files" onclick="loadMonitor()"></i> &nbsp
+                        <i class="fas fa-edit" style="color:dodgerblue;cursor: pointer;" title="Edit rotation file values" onclick="showModifyRotation('${file}')"></i> &nbsp
+                        <i class="fas fa-trash-alt" style="color:red;cursor: pointer;" onclick="ModalDeleteMonitorFile('${uuid}', '${file}', '${response.data[file]["path"]}')"></i>
+                        </td>
+                        </tr>
+<tr id="edit-file-${file}" style="display:none;" bgcolor="peachpuff">
+    <td colspan="3">
+        <div class="form-row">
+            <div class="col">
+                Path: <input class="form-control" id="rotation-path-${file}" value="${response.data[file]["path"]}">
+            </div>
+            <div class="col">
+                Maximum file size: <input class="form-control" id="rotation-size-${file}" value="${response.data[file]["maxSize"]}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                Maximum file lines: <input class="form-control" id="rotation-lines-${file}" value="${response.data[file]["maxLines"]}">
+            </div>
+            <div class="col">
+                Maximum rotation files: <input class="form-control" id="rotation-files-${file}" value="${response.data[file]["maxFiles"]}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                Maximum file days rotation: <input class="form-control" id="rotation-days-${file}" value="${response.data[file]["maxDays"]}">
+            </div>
+        </div>
+    </td>
+    <td>
+        <div class="form-row text-center">
+            <div class="col">
+                <button class="btn btn-primary float-right" onclick="EditRotation('${uuid}', '${file}')">Save</button>
+            </div>
+        </div>
+        <br>
+        <div class="form-row text-center">
+            <div class="col">
+                <button class="btn btn-danger float-right" onclick="hideEditRotation('${file}')">Cancel</button>
+            </div>
+        </div>
+    </td>
+</tr>
+                        `
+                        
                     }
                     document.getElementById('file-data-monitor').innerHTML = html;
                 }

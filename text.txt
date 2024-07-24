@@ -1,0 +1,27 @@
+     <td scope="row" width="33%" style="word-wrap: break-word;" class="align-middle">
+                                    <strong>${nodes[node]['name']}</strong>
+                                    <p class="text-muted">${nodes[node]['ip']}</p>
+                                    <!-- <i class="fas fa-code" title="Ruleset Management"></i> -->
+
+                                    <div id="node-info-${node}">
+                                       <!-- <p><b>Suricata rulesets</b></p> -->
+                                        <p id="all-data-${uuid}" class="text-danger small">No ruleset selected...</p>
+                                        <p><b>Zeek</b></p>
+                                        <p id="zeek-data-${uuid}" class="text-danger small">Zeek is not available...</p>
+                                    </div>
+                                    <!-- <div>
+                                    </div>
+                                    <br><br> -->
+                                    <!-- <span id="${uuid}-owlhservice" style="display:none; font-size: 15px; cursor: default;" class="col-md-4 badge bg-warning align-text-bottom text-white" onclick="DeployService('${uuid}')">Install service</span> -->
+                                </td>
+
+
+
+
+
+
+
+
+
+
+                        

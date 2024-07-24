@@ -16,18 +16,45 @@
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    
 
     <!-- Custom styles for this template -->
     <link href="css/offcanvas.css" rel="stylesheet">
     
     <!-- DataTable -->
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.1.0/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.0/css/dataTables.dataTables.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/searchpanes/2.3.1/js/dataTables.searchPanes.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/searchpanes/2.3.1/js/searchPanes.dataTables.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/select/2.0.3/js/dataTables.select.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/select/2.0.3/js/select.dataTables.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 
 </head>
-
+<style>
+    .dropdown-content {
+        display: block;
+        background-color: white;
+        position: absolute;
+        right: 15%;
+        bottom: -50px;
+        border-radius: 10px;
+        padding: 10px;
+        z-index: 9999;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+    }
+    .dropdown-content.show {
+     
+        max-height: 500px; /* Adjust as needed */
+        opacity: 1;
+    }
+</style>
 <body class="bg-light">
 
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark"
@@ -284,7 +311,17 @@
     <script src="js/footer.js"></script>
     <script src="js/loadTitle.js"></script>
     <script src="js/loginButton.js"></script>
-    <!-- <script src="./js/dataTable/indexTable.js"></script> -->
+    <script src="./js/dataTable/dataTable.js"></script>
+    <script>
+        function toggleDropdown(uuid) {
+            var dropdown = document.getElementById('dropdown-' + uuid);
+            if (dropdown.style.display === "none") {
+                dropdown.style.display = "block";
+            } else {
+                dropdown.style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -204,4 +204,9 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("filterContainer").addEventListener('input', applyFilters);
         })
         .catch(error => console.error('Error fetching data:', error));
-});
+
+
+       
+    });
+const table_node_monitor = new DataTable('#table_node_monitor')
+
