@@ -407,7 +407,7 @@ function GetAllNodes() {
                                     
                                     <i class="fas fa-ellipsis-v" style="cursor: pointer;" onclick="toggleDropdown('${uuid}')"></i>
                                     </td>
-                                    <div id="dropdown-${uuid}" style="display: none; background-color:white;position: absolute; right: 15%; bottom: -50px; border-radius: 10px; padding: 10px;z-index: 9999; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+                                    <div id="dropdown-${uuid}" style="display: none; background-color:white;position: absolute; right: 15%; bottom: 0; border-radius: 10px; padding: 10px;z-index: 9999; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
                                         <span style="font-size: 15px; color: Grey;" id="node-actions-${uuid}">
                                             <i id="node-services-${uuid}" class="fas fa-box-open" style="cursor: pointer; color:black;" title="node services configuration" onclick="showServicesConfig('${uuid}', '${nodes[node]['name']}');"> | Node services configuration |</i>
                                             <br><i id="node-monitor-${uuid}" class="fas fa-desktop" style="cursor: pointer; color:black;" title="Node monitoring" onclick="ShowMonitoring('${uuid}', '${nodes[node]['name']}');"> | Node monitoring |</i>

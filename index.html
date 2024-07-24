@@ -317,6 +317,11 @@
             var dropdown = document.getElementById('dropdown-' + uuid);
             if (dropdown.style.display === "none") {
                 dropdown.style.display = "block";
+                document.addEventListener('click', function(event) {
+                    if (!dropdown.contains(event.target) && event.target !== document.querySelector(`.fa-ellipsis-v[onclick="toggleDropdown('${uuid}')"]`)) {
+                        dropdown.style.display = "none";
+                    }
+                });
             } else {
                 dropdown.style.display = "none";
             }
