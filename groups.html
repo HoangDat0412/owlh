@@ -8,6 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="img/favicon.ico">
     <link rel="stylesheet" href="./css/css/groups.css">
+    <link rel="stylesheet" href="./css/css/node.css">
     <title>Fly protect Master</title>
 
     <!-- Bootstrap core CSS -->
@@ -27,7 +28,7 @@
     >
         <img class="mr-3 ml-5" src="img/logo.jpg" alt="" height="30">
         <a class="navbar-brand mr-auto mr-lg-0"
-            href="nodes.html"><i class="text-warning">Fly protect</i> | </a>
+            href="/"><i class="text-warning">Fly protect</i> | </a>
         <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,7 +38,7 @@
         <div class="navbar-collapse offcanvas-collapse ml-4" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto ml-2">
                 <li class="nav-item">
-                    <a class="nav-link" href="nodes.html">Nodes</a>
+                    <a class="nav-link" href="/">Nodes</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link ml-2" href="groups.html">Groups</a>
@@ -83,7 +84,7 @@
        <div class="d-flex align-items-center p-3 my-3 text-white-50 background rounded shadow-sm">
         <img class="mr-3" src="img/logo.jpg" alt="" height="48">
         <div class="lh-100">
-            <h3 class="mb-0 text-white lh-100">Fly protect</h3>
+            <h3 class="mb-0 text-white lh-100">Groups</h3>
             <small class="text-light">Protect your valuable digital
                 assets from harm</small>
         </div>
@@ -96,7 +97,7 @@
         <br>
 
         <div class="text-decoration-none text-primary" style="width:20%; float:right;">
-            <a class="btn btn-primary float-right text-decoration-none text-white" onclick="modalAddGroup()" id="group-text" style="cursor: default;">Add new group</a> 
+            <button class="style_button float-right" onclick="modalAddGroup()" id="group-text" style="cursor: pointer;">Add new group</button> 
         </div>
         <br><br><br>
 
@@ -105,7 +106,7 @@
 
         <br>
         <div class="text-decoration-none text-primary" style="width:20%; float:right;">
-            <a class="btn btn-primary float-right text-decoration-none text-white" onclick="modalAddGroup()" id="group-text" style="cursor: default;">Add new group</a> 
+            <a class="btn btn-primary float-right text-decoration-none text-white d-none" onclick="modalAddGroup()" id="group-text" style="cursor: default;">Add new group</a> 
         </div>
 
         <!-- Footer -->

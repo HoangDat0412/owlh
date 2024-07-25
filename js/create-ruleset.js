@@ -99,24 +99,27 @@ function generateAllRuleDataHTMLOutput(sources) {
     html = html + 
     '<div>'+
         '<div class="input-group">'+
-            '<div class="input-group-prepend">'+
-                '<span class="input-group-text">Ruleset Name</span>'+
-            '</div>'+
-            '<input type="text" class="form-control" placeholder="Ruleset name" id="new-ruleset-name-input">'+
+            '<div class="coolinput mb-2 mr-sm-2 mb-sm-0">' +
+                ' <label for="input" class="text">Ruleset Name: </label>'+
+                // '<span class="input-group-text"> aaa</span>'+
+            
+            '<input type="text" class="form-control" placeholder="Enter your ruleset name" id="new-ruleset-name-input"  style="width: 50rem;">'+
+            '</div>' +
         '</div>'+
         '<br>'+
         '<div class="input-group">'+
-            '<div class="input-group-prepend">'+
-                '<span class="input-group-text">Ruleset Description</span>'+
-            '</div>'+
-            '<input type="text" class="form-control" placeholder="Ruleset description" id="new-ruleset-description-input">'+
+            '<div class="coolinput mb-2 mr-sm-2 mb-sm-0">'+
+            ' <label for="input" class="text">Ruleset Description: </label>'+
+                // '<span class="input-group-text">Ruleset Description</span>'+
+                '<input type="text" class="form-control" placeholder="Enter your ruleset description" id="new-ruleset-description-input" style="width: 50rem;">'+
+                '</div>'+
         '</div>'+
         '<br>'+
-        '<button id="top-add-btn" class="btn btn-primary float-right createNewRulesetLocal" type="button">Add</button>'+
+        '<button id="top-add-btn" class="style_button float-right createNewRulesetLocal" type="button">Add</button>'+
     '</div>'+
     '<br>'+
 
-    '<h5>Select rulesets</h5>'+
+    '<h4>Select rulesets</h4>'+
     '<div class="form-check">';
     for (source in sources) {
         if(sources[source]["type"] == "source"){            
@@ -124,7 +127,7 @@ function generateAllRuleDataHTMLOutput(sources) {
                 arrayRulesets.push(sources[source]["name"]);
                 rulesetsIds.push(sources[source]["sourceUUID"]);
                 html = html +'<ul class="checkbox-grid">'+
-                ' <li style="display: block; float: left; width: 25%"><input class="ruleset-input ruleset-source" type="checkbox" sourceUUID="'+sources[source]["sourceUUID"]+'" value="'+sources[source]["name"]+'" id="selector-checkbox-'+sources[source]["sourceUUID"]+'" checked/><label for="'+sources[source]["name"]+'">&nbsp'+sources[source]["name"]+'</label></li>'+
+                ' <li style="display: block; float: left; width: 100%"><input class="ruleset-input ruleset-source" type="checkbox" sourceUUID="'+sources[source]["sourceUUID"]+'" value="'+sources[source]["name"]+'" id="selector-checkbox-'+sources[source]["sourceUUID"]+'" checked/><label for="'+sources[source]["name"]+'">&nbsp'+sources[source]["name"]+'</label></li>'+
                 '</ul>';
                 
             }
@@ -135,13 +138,13 @@ function generateAllRuleDataHTMLOutput(sources) {
     html = html +'</div>'+
         
     '<br><br>'+
-    '<br><br><br>'+
+    '<br><br>'+
 
-    '<div class="input-group mt-1" width="100%">'+
-        '<input class="form-control" type="text" id="ruleset-search-input" onkeyup="searchRuleset(\''+arrayRulesets+'\', \''+rulesetsIds+'\')" placeholder="Search by rule file name..." title="Insert a ruleset name for search"> &nbsp'+
+    '<div class="input-group mt-1 search_create" width="100%">'+
+        '<input style="border: 1px solid black" class="form-control" type="text" id="ruleset-search-input" onkeyup="searchRuleset(\''+arrayRulesets+'\', \''+rulesetsIds+'\')" placeholder="Search by rule file name..." title="Insert a ruleset name for search"> &nbsp'+
     '</div>'+
-    '<table class="table table-hover" style="table-layout: fixed" style="width:1px" id="create-ruleset-table">' +
-        '<thead>                                                      ' +
+    '<table class="table table-striped mt-4" style="table-layout: fixed" style="width:1px" id="create-ruleset-table">' +
+        '<thead class="thead-dark">                                                      ' +
         '<tr>                                                         ' +
         '<th style="width: 10%"><input type="checkbox" id="select-all-create-ruleset" onchange="CheckAll(this)"></th>' +
         '<th>Ruleset name</th>                                          ' +
@@ -178,7 +181,7 @@ function generateAllRuleDataHTMLOutput(sources) {
                 }
             }
     html = html + '</tbody></table>'+
-    '<br><button id="bot-add-btn" class="btn btn-primary float-right createNewRulesetLocal" type="button">Add</button><br><br>';     
+    '<br><button id="bot-add-btn" class="style_button float-right createNewRulesetLocal" type="button">Add</button><br><br>';     
 
     if (isEmpty){
         return '<h3 style="text-align:center">There are no ruleset sources created</h3>'+

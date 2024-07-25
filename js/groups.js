@@ -32,9 +32,9 @@ function modalAddGroup(){
     modalWindow.innerHTML = '<div class="modal-dialog">'+
         '<div class="modal-content">'+
 
-            '<div class="modal-header">'+
+            '<div class="modal-header" style="background-image: url(../../img/backgroundlogin.jpg);  color: white; background-size: cover; object-fit: cover;">'+
                 '<h4 class="modal-title" id="group-header">Add group</h4>'+
-                '<button type="button" class="close" data-dismiss="modal">&times;</button>'+
+                '<button type="button" class="close text-light" data-dismiss="modal">&times;</button>'+
             '</div>'+
 
             '<div class="modal-body" id="group-modal-footer-inputtext">'+
@@ -185,8 +185,8 @@ function GetAllGroups(){
             }else{
                 var html = "";
                 html = html + '<div>'+
-                '<table class="table table-hover" style="table-layout: fixed" width="100%">' +
-                    '<thead>' +
+                '<table class="table table-striped" style="table-layout: fixed" width="100%">' +
+                    '<thead class="thead-dark">' +
                         '<tr>' +
                             '<th width="20%">Name</th>' +
                             '<th>Description</th>' +

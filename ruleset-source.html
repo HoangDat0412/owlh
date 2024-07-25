@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark"
         style="background-image: linear-gradient(to right, #051937, #164067, #236b9a, #2c9bcd, #36ceff);">
         <img class="mr-3 ml-5" src="img/logo.jpg" alt="" height="30">
-        <a class="navbar-brand mr-auto mr-lg-0" href="nodes.html"><i class="text-warning">Fly protect</i> | </a>
+        <a class="navbar-brand mr-auto mr-lg-0" href="/"><i class="text-warning">Fly protect</i> | </a>
 
         <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
         <div class="navbar-collapse offcanvas-collapse ml-4" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto ml-2">
                 <li class="nav-item">
-                    <a class="nav-link" href="nodes.html">Nodes</a>
+                    <a class="nav-link" href="/">Nodes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link ml-2" href="groups.html">Groups</a>
@@ -220,25 +220,28 @@
             <form id="group-ruleset-source-details">
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <div class="input-group mb-4 mr-sm-4 mb-sm-0">
+                        <div class="coolinput mb-4 mr-sm-4 mb-sm-0">
+                            <label for="input" class="text">Name: </label>
                             <input type="text" class="form-control" id="ruleset-source-name-edit"
-                                placeholder="New ruleset name">
+                                placeholder="New ruleset name" style="width: 65rem;">
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="coolinput mb-2 mr-sm-2 mb-sm-0">
+                            <label for="input" class="text">Description: </label>
                             <input type="text" class="form-control" id="ruleset-source-edit-desc"
-                                placeholder="New ruleset description">
+                                placeholder="New ruleset description" style="width: 65rem;">
                             <input type="hidden" class="form-control" id="ruleset-source-uuid">
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <input type="text" class="form-control" id="ruleset-source-edit-url" placeholder="New url">
+                        <div class="coolinput mb-2 mr-sm-2 mb-sm-0">
+                            <label for="input" class="text">URL: </label>
+                            <input type="text" class="form-control" id="ruleset-source-edit-url" placeholder="New url" style="width: 65rem;">
                         </div>
                     </div>
                 </div>

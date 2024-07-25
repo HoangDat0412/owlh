@@ -55,7 +55,7 @@ function generateAllRulesHTMLOutput(response, fileuuid, ipmaster, portmaster, ru
             '<br><br>';
     }       
     html = html + '<table class="table table-hover" style="table-layout: fixed" style="width:1px">' +
-        '<thead>                                                      ' +
+        '<thead class="thead-dark">                                                      ' +
             '<tr>                                                         ' +
                 '<th align="center" style="width: 5%">Status</th>                           ' +
                 '<th style="width: 10%">Sid</th>                              ' +

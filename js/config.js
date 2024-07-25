@@ -9,6 +9,7 @@ function loadFileIntoTextarea(){
         '<span id="conn-form-span">'+
             '<br>'+
             '<table class="table table-hover" style="table-layout: fixed" style="width:1px">'+
+            '<thead class="thead-dark">'+
                 '<tr>'+
                     '<th>Ip</th>'+
                     '<th>Port</th>'+
@@ -19,6 +20,7 @@ function loadFileIntoTextarea(){
                     '<td id="file-port"></td>'+
                     '<td><a id="check-status-config" href="" class="btn btn-success float-center" target="_blank">Check Master API connection</a></td>'+
                 '</tr>'+
+                '</thead>' +
             '</table>'+
         '</span>'+
     '</div>'+

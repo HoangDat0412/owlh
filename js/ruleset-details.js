@@ -52,7 +52,7 @@ function generateAllRulesetDetailsHTMLOutput(response, sourceName, type, uuid){
         '<a type="button" class="btn btn-primary mr-2" onclick="loadRulesetBySearch(\''+uuid+'\', \''+sourceName+'\')"><i class="fas fa-search" style="color: white;"></i></a>'+
     '</div><br>'+
     '<table class="table table-hover" style="table-layout: fixed" style="width:1px">' +
-        '<thead>' +
+        '<thead class="thead-dark">' +
             '<tr>' +
             '<th>File Name</th>' +
             '<th>Ruleset</th>' +

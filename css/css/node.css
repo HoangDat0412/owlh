@@ -2,12 +2,34 @@
 .navbar-nav .nav-item.active {
     border-bottom: 2px solid #ffffff;
 }
-.background{
-    background-image: url(../../img/backgroundlogin.jpg);
-    object-fit: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
+.background {
+  position: relative;
+  background-image: url('../../img/world.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 20px; /* Adjust as necessary */
 }
+.background .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 1;
+}
+.background .content {
+  position: relative;
+  z-index: 2; /* Ensures content is above the overlay */
+  color: white; /* Ensure text is readable on the overlay */
+}
+.image-container {
+  display: inline-block; /* Ensures it wraps around the image properly */
+}
+.image-container img {
+  display: block;
+}
+
 .style_button {
     --border-color: linear-gradient(-45deg, #2200ff, #b40fe7, #00fffb);
     --border-width: 0.125em;
@@ -147,3 +169,4 @@ height: 50px;
   .coolinput input[type=text].input:focus {
     outline: none;
   }
+
