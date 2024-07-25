@@ -69,27 +69,64 @@ function LoadFileLastLines() {
         if(response.data.permissions == "none"){
             PrivilegesMessage();              
         }else{   
-            if(response.data.ack == "false"){
-                $('html,body').scrollTop(0);
-                var alert = document.getElementById('floating-alert');
-                alert.innerHTML = alert.innerHTML + '<div class="alert alert-danger alert-dismissible fade show">'+
-                    '<strong>Error: </strong>'+response.data.error+'.'+
-                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                        '<span aria-hidden="true">&times;</span>'+
-                    '</button>'+
-                '</div>';
-                setTimeout(function() {$(".alert").alert('close')}, 30000);
-            }else if (line != "none") {
-                document.getElementById('inputTextTailLines').disabled='true';
-                document.getElementById('inputTextTailLines').style.backgroundColor='white';
-                // document.getElementById('upper-buttons-file').innerHTML = '<button type="button" class="btn btn-secondary" onclick="closeCurrentFile()">Close</button>'; 
-                document.getElementById('lower-buttons-file').innerHTML = '<button type="button" class="btn btn-secondary" onclick="closeCurrentFile()">Close</button>'; 
-                document.getElementById('inputTextTailLines').value = response.data["result"];
-            }else{
-                document.getElementById('upper-buttons-file').innerHTML = '<button type="button" class="btn btn-secondary" onclick="closeCurrentFile()">Close</button>  &nbsp <button type="button" class="btn btn-primary" onclick="saveCurrentContent()">Save</button>'; 
-                document.getElementById('lower-buttons-file').innerHTML = '<button type="button" class="btn btn-secondary" onclick="closeCurrentFile()">Close</button>  &nbsp <button type="button" class="btn btn-primary" onclick="saveCurrentContent()">Save</button>'; 
-                document.getElementById('inputTextTailLines').value = response.data["result"];
-            }
+        //    console.log(JSON.stringify(response.data))
+        const tableHtml = document.getElementById("table1");
+        // const url = 'http://localhost:3000/api';
+        
+        // Tạo bảng HTML
+        let tableContent = `
+            <thead>
+                <tr>
+                    
+                    <th>Id</th>
+                    <th>Action</th>
+                    <th>Category</th>
+                    <th>Rev</th>
+                    <th>Severity</th>
+                    <th>Signature</th>
+                    <th>SignatureId</th>
+                    <th>Times</th>
+                    <th>EventType</th>
+                    <th>ContinentCode</th>
+                    <th>CountryCode</th>
+                    <th>CountryName</th>
+                    <th>InIface</th>
+                    <th>MacAddress</th>
+                    <th>Proto</th>
+                    <th>SrcIp</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+        `;
+
+        response.data.forEach(item => {
+            tableContent += `
+                <tr>
+                    <td>${item.Id}</td>
+                    <td>${item.Action}</td>
+                    <td>${item.Category}</td>
+                    <td>${item.Rev}</td>
+                    <td>${item.Severity}</td>
+                    <td>${item.Signature}</td>
+                    <td>${item.SignatureId}</td>
+                    <td>${item.Times}</td>
+                    <td>${item.EventType}</td>
+                    <td>${item.ContinentCode}</td>
+                    <td>${item.CountryCode}</td>
+                    <td>${item.CountryName}</td>
+                    <td>${item.InIface}</td>
+                    <td>${item.MacAddress}</td>
+                    <td>${item.Proto}</td>
+                    <td>${item.SrcIp}</td>
+                    <td>${item.Timestamp}</td>
+                </tr>
+            `;
+        });
+
+        tableContent += '</tbody>';
+        tableHtml.innerHTML = tableContent;
+        // const table1 = new DataTable('#table1');
         }
         })
         .catch(function (error) {

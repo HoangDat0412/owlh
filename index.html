@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="img/favicon.ico">
     <link rel="stylesheet" href="./css/css/node.css">
-    
+
     <title>Fly protect Nodes</title>
 
     <!-- Bootstrap core CSS -->
@@ -16,45 +16,50 @@
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="css/fontawesome/css/all.css">
-    
+
 
     <!-- Custom styles for this template -->
     <link href="css/offcanvas.css" rel="stylesheet">
-    
+
     <!-- DataTable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.0/css/dataTables.dataTables.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/searchpanes/2.3.1/js/dataTables.searchPanes.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/searchpanes/2.3.1/js/searchPanes.dataTables.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/select/2.0.3/js/dataTables.select.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/select/2.0.3/js/select.dataTables.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/searchpanes/2.3.1/js/dataTables.searchPanes.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/searchpanes/2.3.1/js/searchPanes.dataTables.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/select/2.0.3/js/dataTables.select.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/select/2.0.3/js/select.dataTables.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 
 </head>
 <style>
-    .dropdown-content {
-        display: block;
-        background-color: white;
-        position: absolute;
-        right: 15%;
-        bottom: -50px;
-        border-radius: 10px;
+    .dt-search,
+    .dt-length {
+        display: none;
+    }
+    tr .dt-orderable-desc{
+        border: 0.5px solid rgb(169, 169, 169);
+        background-color: #4C86B6;
+        color: white;
+    }
+    .dt-layout-table{
+        border: 1px solid black;
         padding: 10px;
-        z-index: 9999;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
+        border-radius: 10px;
     }
-    .dropdown-content.show {
-     
-        max-height: 500px; /* Adjust as needed */
-        opacity: 1;
+    .dt-search label{
+        font-size: 20px;
+        margin-right: 10px;
     }
+    .dt-column-order{
+        color: white;
+    }
+
 </style>
+
 <body class="bg-light">
 
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark"
@@ -117,12 +122,16 @@
         </div>
 
         <!-- Header banner -->
-        <div class="d-flex align-items-center p-3 my-3 text-white-50 background rounded shadow-sm">
-            <img class="mr-3" src="img/logo.jpg" alt="" height="48">
-            <div class="lh-100">
-                <h3 class="mb-0 text-white lh-100">Fly protect</h3>
-                <small class="text-light">Protect your valuable digital
-                    assets from harm</small>
+        <div class="d-flex align-items-center p-3 my-3 text-dark background rounded shadow-sm">
+            <div class="overlay"></div>
+            <div class="content d-flex align-items-center">
+                <div class="image-container mr-3">
+                    <img src="img/logo.jpg" alt="" height="48">
+                </div>
+                <div class="lh-100">
+                    <h3 class="mb-0 lh-100">Fly protect</h3>
+                    <small>Protect your valuable digital assets from harm</small>
+                </div>
             </div>
         </div>
 
@@ -147,62 +156,68 @@
         </div>
         <br><br> -->
 
+        
+ 
         <div class="container" id="nodes-table">
             <!-- <table class="display mt-5"  id="node-table" style="width:100%"> 
             </table> -->
-           
+
         </div>
 
         <!-- <small class="text-decoration-none text-white" style="width:20%; float:right;">
             <a class="btn btn-primary float-right" id="addnids" onclick="formAddNids()">Add NIDS</a>
         </small> -->
-        <a class="d-none" onclick="formAddNids()" id="add-nid-bottom" ></a>
+        <a class="d-none" onclick="formAddNids()" id="add-nid-bottom"></a>
         <br><br>
         <div class="container" style="display: none" id="nidsform">
             <form id="nodedetails">
                 <div class="form-row" id="">
                     <div class="form-group col-md-6">
                         <div class="coolinput mb-2 mr-sm-2 mb-sm-0">
-                          
-                                <label for="input" class="text">Node name:</label>
-                                <input type="text" class="form-control" id="nodename" placeholder="node-name" required style="width: 500px;">
-                          
+
+                            <label for="input" class="text">Node name:</label>
+                            <input type="text" class="form-control" id="nodename" placeholder="node-name" required
+                                style="width: 500px;">
+
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <div class="coolinput mb-2 mr-sm-2 mb-sm-0">
-                           
+
                             <label for="input" class="text">Node IP:</label>
-                            
-                            <input type="text" class="form-control" id="nodeip" placeholder="x.x.x.x" required style="width: 500px;">
+
+                            <input type="text" class="form-control" id="nodeip" placeholder="x.x.x.x" required
+                                style="width: 500px;">
                         </div>
                     </div>
                     <div class="form-group col-md-6">
                         <div class="coolinput mb-2 mr-sm-2 mb-sm-0">
-                          
+
                             <label for="input" class="text">Node Port:</label>
-                            
-                            <input type="text" class="form-control" id="nodeport" placeholder="e.g: 50002" required style="width: 500px;">
+
+                            <input type="text" class="form-control" id="nodeport" placeholder="e.g: 50002" required
+                                style="width: 500px;">
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <div class="coolinput mb-2 mr-sm-2 mb-sm-0">
-                           
+
                             <label for="input" class="text">Node User:</label>
 
-                           
-                            <input type="text" class="form-control" id="nodeuser" placeholder="Node user..." required style="width: 500px;">
+
+                            <input type="text" class="form-control" id="nodeuser" placeholder="Node user..." required
+                                style="width: 500px;">
                         </div>
                     </div>
                     <div class="form-group col-md-6">
                         <div class="coolinput mb-2 mr-sm-2 mb-sm-0">
-                     
+
                             <label for="input" class="text">Node Password:</label>
-                        
+
                             <input type="password" class="form-control" id="nodepass" placeholder="Node password..."
                                 required style="width: 500px;">
                         </div>
@@ -312,12 +327,14 @@
     <script src="js/loadTitle.js"></script>
     <script src="js/loginButton.js"></script>
     <script src="./js/dataTable/dataTable.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="./js/chart/apexChart.js"></script>
     <script>
         function toggleDropdown(uuid) {
             var dropdown = document.getElementById('dropdown-' + uuid);
             if (dropdown.style.display === "none") {
                 dropdown.style.display = "block";
-                document.addEventListener('click', function(event) {
+                document.addEventListener('click', function (event) {
                     if (!dropdown.contains(event.target) && event.target !== document.querySelector(`.fa-ellipsis-v[onclick="toggleDropdown('${uuid}')"]`)) {
                         dropdown.style.display = "none";
                     }

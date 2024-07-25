@@ -36,8 +36,31 @@
   
     
   </head>
+  <style>
+    tr .dt-orderable-desc{
+        border: 0.5px solid rgb(169, 169, 169);
+        background-color: #4C86B6;
+        color: white;
+    }
+    .dt-layout-table{
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    .dt-search label{
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    thead tr .test .dt-column-order{
+        
+          display: none;
+        
+    }
+ 
+</style>
 
-  <body class="bg-light">
+<body class="bg-light">
+      
 
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark"
         style="background-image: linear-gradient(to right, #051937, #164067, #236b9a, #2c9bcd, #36ceff);">
@@ -119,11 +142,11 @@
                 </td>
             </tr>
             <tr><td height="20"></td></tr>
-            <tr style="width: 100%; height: 500px">
+            <tr style="width: 100%;">
                 <td>
-                    <textarea id="inputTextTailLines" class="form-control" style="width: 100%; height: 650px">
+                    <!-- <textarea id="inputTextTailLines" class="form-control" style="width: 100%; height: 650px">
                         
-                    </textarea>
+                    </textarea> -->
                 </td>
             </tr>
             <tr><td height="20"></td></tr>
@@ -136,7 +159,7 @@
             <tr><td height="20"></td></tr>
         </table>
 
-
+        <div id="chartLoadContent"></div>
 
         <!-- TABLE TEST -->
         <!-- <p><button id="button">Delete selected row</button></p> -->
@@ -180,6 +203,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://cdn.datatables.net/2.1.0/js/dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/axios/dist/axios.js"></script> 
     <script src="js/jquery-3.4.1.js"></script>
     <script src="css/dist/js/bootstrap.min.js"></script>
@@ -187,10 +211,13 @@
     <script src="js/offcanvas.js"></script>
     <!-- <script src="js/node/dataflow.js"></script> -->
     <script src="js/node/load-content.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="js/loadTitle.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/loginButton.js"></script>
     <script src="./js/dataTable/dataTable.js"></script>
+
+    
   </body>
 </html>
 

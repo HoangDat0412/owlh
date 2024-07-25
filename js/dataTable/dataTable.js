@@ -7,74 +7,65 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
             // Lấy phần tử table
-            const tableHtml = document.getElementById("table1");
+            // const tableHtml = document.getElementById("table1");
 
-            // Tạo bảng HTML
-            let tableContent = `
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Action</th>
-                        <th>Category</th>
-                        <th>Rev</th>
-                        <th>Severity</th>
-                        <th>Signature</th>
-                        <th>SignatureId</th>
-                        <th>Times</th>
-                        <th>EventType</th>
-                        <th>ContinentCode</th>
-                        <th>CountryCode</th>
-                        <th>CountryName</th>
-                        <th>InIface</th>
-                        <th>MacAddress</th>
-                        <th>Proto</th>
-                        <th>SrcIp</th>
-                        <th>Timestamp</th>
-                    </tr>
-                </thead>
-                <tbody>
-            `;
+            // // Tạo bảng HTML
+            // let tableContent = `
+            //     <thead>
+            //         <tr>
+                        
+            //             <th>Id</th>
+            //             <th>Action</th>
+            //             <th>Category</th>
+            //             <th>Rev</th>
+            //             <th>Severity</th>
+            //             <th>Signature</th>
+            //             <th>SignatureId</th>
+            //             <th>Times</th>
+            //             <th>EventType</th>
+            //             <th>ContinentCode</th>
+            //             <th>CountryCode</th>
+            //             <th>CountryName</th>
+            //             <th>InIface</th>
+            //             <th>MacAddress</th>
+            //             <th>Proto</th>
+            //             <th>SrcIp</th>
+            //             <th>Timestamp</th>
+            //         </tr>
+            //     </thead>
+            //     <tbody>
+            // `;
 
-            data.forEach(item => {
-                tableContent += `
-                    <tr>
-                        <td>${item.Id}</td>
-                        <td>${item.Action}</td>
-                        <td>${item.Category}</td>
-                        <td>${item.Rev}</td>
-                        <td>${item.Severity}</td>
-                        <td>${item.Signature}</td>
-                        <td>${item.SignatureId}</td>
-                        <td>${item.Times}</td>
-                        <td>${item.EventType}</td>
-                        <td>${item.ContinentCode}</td>
-                        <td>${item.CountryCode}</td>
-                        <td>${item.CountryName}</td>
-                        <td>${item.InIface}</td>
-                        <td>${item.MacAddress}</td>
-                        <td>${item.Proto}</td>
-                        <td>${item.SrcIp}</td>
-                        <td>${item.Timestamp}</td>
-                    </tr>
-                `;
-            });
+            // data.forEach(item => {
+            //     tableContent += `
+            //         <tr>
+                        
+            //             <td>${item.Id}</td>
+            //             <td>${item.Action}</td>
+            //             <td>${item.Category}</td>
+            //             <td>${item.Rev}</td>
+            //             <td>${item.Severity}</td>
+            //             <td>${item.Signature}</td>
+            //             <td>${item.SignatureId}</td>
+            //             <td>${item.Times}</td>
+            //             <td>${item.EventType}</td>
+            //             <td>${item.ContinentCode}</td>
+            //             <td>${item.CountryCode}</td>
+            //             <td>${item.CountryName}</td>
+            //             <td>${item.InIface}</td>
+            //             <td>${item.MacAddress}</td>
+            //             <td>${item.Proto}</td>
+            //             <td>${item.SrcIp}</td>
+            //             <td>${item.Timestamp}</td>
+            //         </tr>
+            //     `;
+            // });
 
-            tableContent += '</tbody>';
-            tableHtml.innerHTML = tableContent;
+            // tableContent += '</tbody>';
+            // tableHtml.innerHTML = tableContent;
 
             // Khởi tạo DataTable
             const table1 = new DataTable('#table1');
-
-            table1.on('click', 'tbody tr', (e) => {
-                let classList = e.currentTarget.classList;
-
-                if (classList.contains('selected')) {
-                    classList.remove('selected');
-                } else {
-                    table1.rows('.selected').nodes().each((row) => row.classList.remove('selected'));
-                    classList.add('selected');
-                }
-            });
 
             // Mở và đóng modal
             const popup = document.getElementById("filterPopup");
@@ -209,4 +200,6 @@ document.addEventListener("DOMContentLoaded", function() {
        
     });
 const table_node_monitor = new DataTable('#table_node_monitor')
+// const table1 = new DataTable('#table1')
+
 
