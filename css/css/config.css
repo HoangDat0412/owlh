@@ -94,3 +94,39 @@
 .verify-code button:hover {
     background-color: #3b5bdb;
 }
+     /* Custom toast styles */
+     .toast {
+        visibility: hidden;
+        background-color: #4CAF50 !important; /* Green background color */
+        color: #fff !important;
+        text-align: start;
+        border-radius: 2px;
+        position: fixed;
+        display: flex;
+        z-index: 1;
+        width: 350px !important;
+        top: 100px; /* Position at the top */
+        right: 20px; /* Start at the right */
+        font-size: 17px;
+        padding: 0px; /* Add some padding */
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in-out;
+    }
+    .toast i{
+        font-size: 20px;
+        margin-top: 28px;
+        margin-right: 10px;
+        margin-left: 18px;
+    }
+    .toast .a{
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    .toast.show {
+        visibility: visible;
+        animation: slide-left 0.3s ease-in-out forwards;
+    }
+    @keyframes slide-left {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(0%); }
+    }
