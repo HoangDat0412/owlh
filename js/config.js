@@ -145,3 +145,65 @@ function loadJSONdata() {
 }
 var payload = "";
 loadJSONdata();
+
+
+var authentication = document.getElementById('authentication')
+authentication.innerHTML = `
+ <div class="fa_section">
+                <i>Fly Protect</i>
+                <p style="margin-top: 20px;"> <span style="font-weight: 500;">ID:</span>
+                    <span>ed82D70-c3a2-45f5-a731-2388c745a697</span>
+                </p>
+                <p> <span style="font-weight: 500;">Name:</span> <span>Admin </span></p>
+                <p><span style="font-weight: 500;">Email:</span> <span>admin@admin.com</span> </p>
+            </div>
+            <div class="fa_section">
+                <h1>Mobile App Authentication (2FA)</h1>
+                <p>Secure your account with TOTP two-factor authentication.</p>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#authenPopup">Setup 2FA</button>
+            </div>
+`
+
+var popup = document.getElementById('authenPopup');
+        popup.innerHTML = `
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="authentication">Two-Factor Authentication (2FA)</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="instructions">
+                            <b style="color: #615DD4;">Configuring Google Authenticator or Authy</b>
+                            <ol>
+                                <li>Install Google Authenticator (iOS - Android) or Authy (iOS - Android).</li>
+                                <li>In the authenticator app, select "+" icon.</li>
+                                <li>Select "Scan a barcode (or QR code)" and use the phone's camera to scan this barcode.</li>
+                            </ol>
+                        </div>
+                        <div class="qr-code">
+                            <img src="https://via.placeholder.com/150" alt="QR Code">
+                        </div>
+                        <div class="secret-key">
+                            SecretKey: QR4XJIBVPBYNQRDYOHXI47BM
+                        </div>
+                        <div class="verify-code">
+                            <label for="auth-code">Verify Code</label>
+                            <input type="text" id="auth-code" placeholder="Authentication Code">
+                            <button id="verifyBtn">Verify & Activate</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.getElementById('verifyBtn').addEventListener('click', function() {
+            var toast = document.getElementById('authToast');
+            toast.className = "toast show";
+            setTimeout(function() {
+                toast.className = toast.className.replace("show", ""); 
+            }, 5000);
+        });

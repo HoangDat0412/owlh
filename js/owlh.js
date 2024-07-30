@@ -365,7 +365,7 @@ function GetAllNodes() {
                             <th>Actions</th>  
                         </tr> 
                     </thead> 
-                    <tbody id="node-table-tbody">`;
+                    <tbody id="node-table-tbody" style="text-align: center;">`;
                             for (node in nodes) {
                                 isEmpty = false;
                                 if (nodes[node]['port'] != undefined) {

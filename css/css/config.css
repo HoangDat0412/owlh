@@ -1,0 +1,132 @@
+.fa-authen {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 97%;
+    margin: 0 auto;
+    /* max-width: 800px; */
+}
+.fa_section {
+    width: 45%;
+}
+.fa_section i {
+    font-size: 34px;
+    font-weight: 600;
+    color: #F0C107;
+    
+}
+.fa_section p {
+    margin: 10px 0;
+    
+}
+.fa_section button {
+    background-color: #5c6bc0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.fa_section button:hover {
+    background-color: #3f51b5;
+}
+.fa_section h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+
+
+
+.modal.fade .modal-dialog {
+    transform: translateY(-100%);
+    transition: transform 2s ease-out;
+}
+.modal.fade.show .modal-dialog {
+    transform: translateY(0);
+}
+.modal-body {
+    font-family: Arial, sans-serif;
+}
+.instructions {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.qr-code {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.secret-key {
+    font-family: monospace;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+.verify-code {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.verify-code input {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.verify-code button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4c6ef5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.verify-code button:hover {
+    background-color: #3b5bdb;
+}
+     /* Custom toast styles */
+     .toast {
+        visibility: hidden;
+        background-color: #4CAF50 !important; /* Green background color */
+        color: #fff !important;
+        text-align: start;
+        border-radius: 2px;
+        position: fixed;
+        display: flex;
+        z-index: 1;
+        width: 350px !important;
+        top: 100px; /* Position at the top */
+        right: 20px; /* Start at the right */
+        font-size: 17px;
+        padding: 0px; /* Add some padding */
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in-out;
+    }
+    .toast i{
+        font-size: 20px;
+        margin-top: 28px;
+        margin-right: 10px;
+        margin-left: 18px;
+    }
+    .toast .a{
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    .toast.show {
+        visibility: visible;
+        animation: slide-left 0.3s ease-in-out forwards;
+    }
+    @keyframes slide-left {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(0%); }
+    }
