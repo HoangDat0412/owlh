@@ -73,10 +73,10 @@ function Login() {
         data: userLogin
     })
     .then(function (response) {
-        console.log(response.data);
         progressBar.style.display = "none";
         progressBarDiv.style.display = "none";
         if (response.data.ack != "false") {
+            console.log(" >>>>> response",response.data);
             document.cookie = response.data;
             document.location.href = 'index.html';
         } else {
@@ -107,6 +107,8 @@ function Login() {
         document.cookie = "";
     });
 }
+
+
 
 // Call loadJSONdata to initialize the process
 loadJSONdata();

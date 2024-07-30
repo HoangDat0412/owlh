@@ -147,22 +147,77 @@ var payload = "";
 loadJSONdata();
 
 
-var authentication = document.getElementById('authentication')
-authentication.innerHTML = `
- <div class="fa_section">
-                <i>Fly Protect</i>
-                <p style="margin-top: 20px;"> <span style="font-weight: 500;">ID:</span>
-                    <span>ed82D70-c3a2-45f5-a731-2388c745a697</span>
-                </p>
-                <p> <span style="font-weight: 500;">Name:</span> <span>Admin </span></p>
-                <p><span style="font-weight: 500;">Email:</span> <span>admin@admin.com</span> </p>
-            </div>
-            <div class="fa_section">
-                <h1>Mobile App Authentication (2FA)</h1>
-                <p>Secure your account with TOTP two-factor authentication.</p>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#authenPopup">Setup 2FA</button>
-            </div>
-`
+// console.log("cooKie",cookieToken)
+
+
+// var authentication = document.getElementById('authentication')
+// authentication.innerHTML = `
+//  <div class="fa_section">
+//                 <i>Fly Protect</i>
+//                 <p style="margin-top: 20px;"> <span style="font-weight: 500;">Port:</span>
+//                     <span id="2fa_Ip">ed82D70-c3a2-45f5-a731-2388c745a697</span>
+//                 </p>
+//                 <p> <span style="font-weight: 500;">Name:</span> <span>Admin </span></p>
+//                 <p><span style="font-weight: 500;">Port:</span> <span id="2fa_port"></span> </p>
+//             </div>
+//             <div class="fa_section">
+//                 <h1>Mobile App Authentication (2FA)</h1>
+//                 <p>Secure your account with TOTP two-factor authentication.</p>
+//                 <button type="button" data-bs-toggle="modal" data-bs-target="#authenPopup">Setup 2FA</button>
+//             </div>
+// `
+
+$.getJSON('../conf/ui.conf', function (data) {
+    // Extract token from cookie
+    let cookieToken = document.cookie   
+    console.log(cookieToken)
+    // Update inner HTML and value of the elements
+    document.getElementById('2fa_Ip').innerHTML = data.master.ip;
+    document.getElementById('2fa_port').innerHTML = data.master.port;
+    
+    var ip2fa = data.master.ip;
+    var port2fa = data.master.port;
+    console.log('>>> IP', ip2fa)
+    console.log('>>> Port', port2fa)
+    axios.get(`https://${ip2fa}:${port2fa}/v1/master/generate-totp`, {
+        headers: {
+            token: cookieToken,
+            user: 'admin'
+        }
+    })
+    .then(response => {
+        console.log('Response:', response.data);
+        const secret = extractSecret(response.data);
+        renderSecret(secret);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
+function extractSecret(uri) {
+    const url = new URL(uri.replace('otpauth://', 'https://'));
+    const params = new URLSearchParams(url.search);
+    const secret = params.get('secret');
+    return secret;
+}
+
+function renderSecret(secretKey) {
+    var secretElement = document.getElementById('secretKey');
+    secretElement.textContent = secretKey;
+    var qrCodeImage = document.getElementById('qrCodeImage');
+    var text = `otpauth://totp/OwlH%20Master:admin?algorithm=SHA1&digits=6&issuer=OwlH%20Master&period=30&secret=${secretKey}`;
+    new QRCode(qrCodeImage, {
+        text: text,
+        width: 150,
+        height: 150,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+}
+
+
 
 var popup = document.getElementById('authenPopup');
         popup.innerHTML = `
@@ -182,10 +237,10 @@ var popup = document.getElementById('authenPopup');
                             </ol>
                         </div>
                         <div class="qr-code">
-                            <img src="https://via.placeholder.com/150" alt="QR Code">
+                            <div id="qrCodeImage"> </div>
                         </div>
                         <div class="secret-key">
-                            SecretKey: QR4XJIBVPBYNQRDYOHXI47BM
+                            SecretKey:  <span id="secretKey"></span>
                         </div>
                         <div class="verify-code">
                             <label for="auth-code">Verify Code</label>

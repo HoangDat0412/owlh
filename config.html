@@ -134,28 +134,47 @@
         </table>
         </div> -->
         <br />
-        <div class="fa-authen" id="authentication"></div>
+        <div class="fa-authen" id="authentication">
+            <div class="fa_section">
+                <i>Fly Protect</i>
+                <p style="margin-top: 20px;"> <span style="font-weight: 500;">Port:</span>
+                    <span id="2fa_Ip"></span>
+                <div style="display: none;">
+                    <input id="ip-2fa" type="text" class="form-control">
+                    <input id="port-2fa" type="text" class="form-control">
+                </div>
+                </p>
+                <p> <span style="font-weight: 500;">Name:</span> <span>Admin </span></p>
+                <p><span style="font-weight: 500;">Port:</span> <span id="2fa_port"></span> </p>
+            </div>
+            <div class="fa_section">
+                <h1>Mobile App Authentication (2FA)</h1>
+                <p>Secure your account with TOTP two-factor authentication.</p>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#authenPopup">Setup 2FA</button>
+            </div>
+        </div>
 
-       <!-- The 2FA Modal -->
-    <div class="modal fade pop_authen" id="authenPopup" tabindex="-1" aria-labelledby="authentication" aria-hidden="true">
+        <!-- The 2FA Modal -->
+        <div class="modal fade pop_authen" id="authenPopup" tabindex="-1" aria-labelledby="authentication"
+            aria-hidden="true">
 
-    </div>
+        </div>
 
- <!-- Toast -->
- <!-- Toast -->
- <div id="authToast" class="toast">
-    <i class="fas fa-check"></i>
-    <div class="a">
-        <strong style="font-size: 20px;">Success!</strong>
-        <p>Authentication code verified successfully!</p>
-    </div>
+        <!-- Toast -->
+        <!-- Toast -->
+        <div id="authToast" class="toast">
+            <i class="fas fa-check"></i>
+            <div class="a">
+                <strong style="font-size: 20px;">Success!</strong>
+                <p>Authentication code verified successfully!</p>
+            </div>
 
-</div>
+        </div>
 
 
         <!-- Footer -->
         <div id="footer"></div>
-      
+
 
         <!-- Modal -->
         <div class="modal fade" id="modal-window"></div>
@@ -171,7 +190,9 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+        integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/axios/dist/axios.js"></script>
     <script src="js/jquery-3.4.1.js"></script>
     <script src="css/dist/js/bootstrap.min.js"></script>
