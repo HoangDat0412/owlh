@@ -28,34 +28,32 @@
 
   <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark" 
-     style="background-image: linear-gradient(to right, #051937, #164067, #236b9a, #2c9bcd, #36ceff);"
-    >
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark"
+        style="background-image: linear-gradient(to right, #051937, #164067, #236b9a, #2c9bcd, #36ceff);">
         <img class="mr-3 ml-5" src="img/logo.jpg" alt="" height="30">
-        <a class="navbar-brand mr-auto mr-lg-0"
-            href="/"><i class="text-warning">Fly protect</i> | </a>
+        <a class="navbar-brand mr-auto mr-lg-0" href="/"><i class="text-warning">Fly protect</i> | </a>
+
         <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button> -->
-    
-    
+
         <div class="navbar-collapse offcanvas-collapse ml-4" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto ml-2">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Nodes</a>
+                    <a class="nav-link " href="/">Nodes</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link ml-2" href="groups.html">Groups</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ml-2" href="rulesets.html">Open Rules</span></a>
+                    <a class="nav-link ml-2" href="rulesets.html">Open Rules</a>
                 </li>
                 <li class="nav-item">
                     <!-- <a class="nav-link" href="response.html">Adapt & Response</a> -->
                 </li>
                 <!-- <li class="nav-item">
-                    <a class="nav-link" href="kibana.html">Kibana</a>
+                <a class="nav-link" href="kibana.html">Kibana</a>
                 </li> -->
                 <li class="nav-item">
                     <a class="nav-link ml-2" href="master.html">Master</a>
@@ -64,18 +62,21 @@
                     <a class="nav-link ml-2" href="config.html">Config</a>
                 </li>
             </ul>
-                    <!-- loged button -->
-        <div class="dropdown mr-4">
-          <button class="btn btn-outline-dark mr-5 dropdown-toggle" type="button"
-           id="dropdownMenuUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="loger-user-name" value=""></b></button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuUser">
-            <a class="dropdown-item" style="cursor:pointer;" onclick="modalChangePasswordLogin()">Change Password</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="cursor:pointer;" onclick="Logout()">Logout</a>
-          </div>
-        </div>
-        <!-- current version -->
-        <!-- <p id="current-version-text" class="text-justify align-middle text-white">v:</p><p class="text-justify text-white mr-4" id="current-version-show"></p> -->
+            <!-- loged button -->
+            <div class="dropdown mr-4">
+                <button class="btn btn-outline-dark dropdown-toggle mr-5" type="button" id="dropdownMenuUser"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b id="loger-user-name" value="">
+                    </b></button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuUser">
+                    <a class="dropdown-item" style="cursor:pointer;" onclick="modalChangePasswordLogin()">Change
+                        Password</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" style="cursor:pointer;" onclick="Logout()">Logout</a>
+                </div>
+            </div>
+            <!-- current version
+            <p id="current-version-text" class="text-justify align-middle text-white">v:</p>
+            <p class="text-justify text-white mr-4" id="current-version-show"></p> -->
         </div>
     </nav>
 
@@ -85,16 +86,19 @@
         <div id="floating-alert" style="top: 5px;">
         </div>
 
-       <!-- Header banner -->
-       <div class="d-flex align-items-center p-3 my-3 text-white-50 background rounded shadow-sm">
-        <img class="mr-3" src="img/logo.jpg" alt="" height="48">
-        <div class="lh-100">
-            <h3 class="mb-0 text-white lh-100">Groups</h3>
-            <small class="text-light">Protect your valuable digital
-                assets from harm</small>
+      <!-- Header banner -->
+      <div class="d-flex align-items-center p-3 my-3 text-dark background rounded shadow-sm">
+        <div class="overlay"></div>
+        <div class="content d-flex align-items-center">
+            <div class="image-container mr-3">
+                <img src="img/logo.jpg" alt="" height="48">
+            </div>
+            <div class="lh-100">
+                <h3 class="mb-0 lh-100">Groups</h3>
+                <small>Protect your valuable digital assets from harm</small>
+            </div>
         </div>
     </div>
-
         <!-- ProgressBar -->            
         <div id="progressBar-create-div" class="progress">
             <div id="progressBar-create" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="100" aria-valuemax="100" style="width: 100%"> &nbsp </div>

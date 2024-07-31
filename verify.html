@@ -28,10 +28,29 @@
                     <input type="text" id="auth-code" name="auth-code" placeholder="Authentication code" required>
                     <span class="auth-icon">&#10004;</span>
                 </div>
-                <button type="submit" class="auth-button">Authenticate</button>
+                <button type="submit" class="auth-button" onclick="Authenticate()">Authenticate</button>
             </form>
             <a href="./login.html" class="back-link">Back to basic login</a>
         </div>
+      
     </div>
 </body>
+<script src="js/axios/dist/axios.js"></script>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="css/dist/js/bootstrap.min.js"></script>
+<script src="js/offcanvas.js"></script>
+
+<script type="text/javascript">
+    $.getJSON('../conf/ui.conf', function (data) {
+        var Ip = data.master.ip;
+        var Port = data.master.port;
+        console.log(Ip)
+        console.log(Port)
+        var url = `https://${Ip}:${Port}/v1/master/verify-login`
+        function Authenticate(){
+            var otp = document.getElementById('auth-code').value;
+            
+        }
+    })
+</script>
 </html>
