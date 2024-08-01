@@ -259,10 +259,12 @@ popup.innerHTML = `
 
 
 
+
+
 $.getJSON('../conf/ui.conf', function (data) {
     document.getElementById('verifyBtn').addEventListener('click', function () {
         var otp = document.getElementById("auth-code").value;
-        console.log('OTP Entered:', otp);
+        // console.log('OTP Entered:', otp);
         if (otp.trim() === "") {
             document.getElementById("alert").style.color = 'red';
             document.getElementById("alert").innerHTML = "Please enter the OTP!";
@@ -307,6 +309,5 @@ $.getJSON('../conf/ui.conf', function (data) {
             })
     });
 });
-
 
 
