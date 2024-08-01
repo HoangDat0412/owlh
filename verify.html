@@ -52,7 +52,6 @@
             console.log(Port)
             var user = localStorage.getItem("user")
             var url = `https://${Ip}:${Port}/v1/master/verify-login`;
-            var otpVerify = true;
             var jsonVerify = {};
             jsonVerify["OTP"] = document.getElementById('auth-code').value;
             jsonVerify["Username"] = user;
@@ -68,7 +67,7 @@
                 .then(response => {
                     console.log("response", response)
                     document.cookie = response.data;
-                    localStorage.setItem('otp-verify', otpVerify)
+                    localStorage.setItem('otp-verify', true)
                     document.getElementById('alert_verify').innerHTML = 'Verify OTP successfully!';
                     document.getElementById('alert_verify').style.color = 'green';
                     setTimeout(() => {
