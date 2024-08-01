@@ -30,6 +30,7 @@
                     <input type="text" id="auth-code" name="auth-code" placeholder="Authentication code" required>
                     <span class="auth-icon">&#10004;</span>
                 </div>
+                <div id="alert_verify" style="text-align: center;"></div>
                 <button type="submit" class="auth-button" id="authenticate">Authenticate</button>
             </form>
             <a href="./login.html" class="back-link">Back to basic login</a>
@@ -66,12 +67,16 @@
                 .then(response => {
                     console.log("response", response)
                     document.cookie = response.data;
+                    document.getElementById('alert_verify').innerHTML = 'Verify OTP successfully!';
+                    document.getElementById('alert_verify').style.color = 'green';
                     setTimeout(() => {
                         document.location.href = 'index.html';
-                    }, 1000)
+                    }, 1500)
                 })
                 .catch(error => {
                     console.error("error: ", error)
+                    document.getElementById('alert_verify').innerHTML = 'Invalid OTP. Please try again.';
+                    document.getElementById('alert_verify').style.color = 'red';
                 })
         })
     })

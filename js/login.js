@@ -100,9 +100,11 @@ function Login() {
             }
         })
         .catch(function (error) {
-            document.getElementById('check-status-login').style.display = 'block';
+            // document.getElementById('check-status-login').style.display = 'block';
+            document.getElementById('alert_login').innerHTML = 'Password Incorrect!';
+            document.getElementById('alert_login').style.color = 'red';
             progressBar.style.display = "none";
-            progressBarDiv.style.display = "none";
+            progressBarDiv.style.display = "none";  
             $('html,body').scrollTop(0);
             var alert = document.getElementById('floating-alert');
             alert.innerHTML = alert.innerHTML + '<div class="alert alert-danger alert-dismissible fade show">' +

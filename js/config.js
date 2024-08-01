@@ -171,7 +171,8 @@ $.getJSON('../conf/ui.conf', function (data) {
     // Extract token from cookie
     let cookieToken = document.cookie
     console.log(cookieToken)
-    console.log("user", payload.user)
+    // console.log("user", payload.user)
+    document.getElementById("user_name").innerHTML = payload.user
     // Update inner HTML and value of the elements
     document.getElementById('2fa_Ip').innerHTML = data.master.ip;
     document.getElementById('2fa_port').innerHTML = data.master.port;
@@ -217,7 +218,6 @@ function renderSecret(secretKey) {
         correctLevel: QRCode.CorrectLevel.H
     });
 }
-
 
 
 var popup = document.getElementById('authenPopup');
