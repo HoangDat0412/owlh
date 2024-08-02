@@ -1,42 +1,42 @@
-function loadFileIntoTextarea(){
+function loadFileIntoTextarea() {
     // var fileContent = document.getElementById('inputTextUI');  
 
     content = document.getElementById('master-table-config');
     content.innerHTML =
-    '<br>'+
-    '<div class="my-3 p-3 bg-white rounded shadow-sm">'+
-        '<h6 class="border-bottom border-gray pb-2 mb-0" onclick="showActions(\'conn\')"><b>Master connection <i class="fas fa-sort-down" id="conn-form-icon"></i></b> </h6>'+        
-        '<span id="conn-form-span">'+
-            '<br>'+
-            '<table class="table table-hover" style="table-layout: fixed" style="width:1px">'+
-            '<thead class="thead-dark">'+
-                '<tr>'+
-                    '<th>Ip</th>'+
-                    '<th>Port</th>'+
-                    '<th>Check</th>'+
-                '</tr>'+
-                '<tr>'+
-                    '<td id="file-ip"></td>'+
-                    '<td id="file-port"></td>'+
-                    '<td><a id="check-status-config" href="" class="btn btn-success float-center" target="_blank">Check Master API connection</a></td>'+
-                '</tr>'+
-                '</thead>' +
-            '</table>'+
-        '</span>'+
-    '</div>'+
+        '<br>' +
+        '<div class="my-3 p-3 bg-white rounded shadow-sm">' +
+        '<h6 class="border-bottom border-gray pb-2 mb-0" onclick="showActions(\'conn\')"><b>Master connection <i class="fas fa-sort-down" id="conn-form-icon"></i></b> </h6>' +
+        '<span id="conn-form-span">' +
+        '<br>' +
+        '<table class="table table-hover" style="table-layout: fixed" style="width:1px">' +
+        '<thead class="thead-dark">' +
+        '<tr>' +
+        '<th>Ip</th>' +
+        '<th>Port</th>' +
+        '<th>Check</th>' +
+        '</tr>' +
+        '<tr>' +
+        '<td id="file-ip"></td>' +
+        '<td id="file-port"></td>' +
+        '<td><a id="check-status-config" href="" class="btn btn-success float-center" target="_blank">Check Master API connection</a></td>' +
+        '</tr>' +
+        '</thead>' +
+        '</table>' +
+        '</span>' +
+        '</div>' +
 
-    '<div id="admin-users-btn" style="display: none;" class="my-3 p-3 bg-white rounded shadow-sm">'+
-        '<h6 class="border-bottom border-gray pb-2 mb-0" onclick="showActions(\'user-admin\')"><b>Administration <i class="fas fa-sort-down" id="user-admin-form-icon"></i></b> </h6>'+        
-        '<span id="user-admin-form-span">'+
-            '<br>'+
-            '<table class="table table-hover" style="table-layout: fixed" style="width:1px">'+
-                '<tr>'+
-                    '<td width="35%">Users, groups and roles administration panel</td>'+
-                    '<td><button type="button" class="btn btn-primary float-left" onclick="adminUsers()">Admin users</button></td>'+
-                '</tr>'+
-            '</table>'+
-        '</span>'+
-    '</div>';
+        '<div id="admin-users-btn" style="display: none;" class="my-3 p-3 bg-white rounded shadow-sm">' +
+        '<h6 class="border-bottom border-gray pb-2 mb-0" onclick="showActions(\'user-admin\')"><b>Administration <i class="fas fa-sort-down" id="user-admin-form-icon"></i></b> </h6>' +
+        '<span id="user-admin-form-span">' +
+        '<br>' +
+        '<table class="table table-hover" style="table-layout: fixed" style="width:1px">' +
+        '<tr>' +
+        '<td width="35%">Users, groups and roles administration panel</td>' +
+        '<td><button type="button" class="btn btn-primary float-left" onclick="adminUsers()">Admin users</button></td>' +
+        '</tr>' +
+        '</table>' +
+        '</span>' +
+        '</div>';
 
     $.getJSON('../conf/ui.conf', function (data) {
         document.getElementById('file-ip').innerHTML = data.master.ip;
@@ -49,9 +49,9 @@ function loadFileIntoTextarea(){
 
 }
 
-function showActions(action){
-    var spanContent = document.getElementById(action+'-form-span');
-    var icon = document.getElementById(action+'-form-icon');
+function showActions(action) {
+    var spanContent = document.getElementById(action + '-form-span');
+    var icon = document.getElementById(action + '-form-icon');
     if (spanContent.style.display == "none") {
         spanContent.style.display = "block";
         icon.classList.add("fa-sort-up");
@@ -81,7 +81,7 @@ function showActions(action){
 //         }else{
 //             location.reload(true);       
 //         }
-        
+
 //     })
 //     .catch(function (error) {
 //         $('html,body').scrollTop(0);
@@ -104,7 +104,7 @@ function checkStatus() {
 }
 
 function adminUsers() {
-    document.location.href='users.html';
+    document.location.href = 'users.html';
 }
 
 // function closeFileChanged(){
@@ -115,13 +115,13 @@ function loadJSONdata() {
     $.getJSON('../conf/ui.conf', function (data) {
         //token check
         var tokens = document.cookie.split(".");
-        if (tokens.length != 3){
+        if (tokens.length != 3) {
             document.cookie = "";
         }
-        if(document.cookie == ""){
-            document.location.href='login.html';
+        if (document.cookie == "") {
+            document.location.href = 'login.html';
         }
-                            
+
         var ipLoad = document.getElementById('ip-master');
         ipLoad.value = data.master.ip;
         var portLoad = document.getElementById('port-master');
@@ -133,39 +133,101 @@ function loadJSONdata() {
         try {
             payload = JSON.parse(atob(tokens[1]));
             //user banner button
-                    document.getElementById('dropdownMenuUser').innerHTML = document.getElementById('dropdownMenuUser').innerHTML + payload.user
-        document.getElementById('loger-user-name').value = payload.user
+            document.getElementById('dropdownMenuUser').innerHTML = document.getElementById('dropdownMenuUser').innerHTML + payload.user
+            document.getElementById('loger-user-name').value = payload.user
             //check user type for display button
-            if(payload.user == "admin"){                
+            if (payload.user == "admin") {
                 $("#admin-users-btn").show();
             }
         }
-        catch(err) {document.cookie = ""; document.location.href='login.html';}
+        catch (err) { document.cookie = ""; document.location.href = 'login.html'; }
     });
 }
 var payload = "";
 loadJSONdata();
 
 
-var authentication = document.getElementById('authentication')
-authentication.innerHTML = `
- <div class="fa_section">
-                <i>Fly Protect</i>
-                <p style="margin-top: 20px;"> <span style="font-weight: 500;">ID:</span>
-                    <span>ed82D70-c3a2-45f5-a731-2388c745a697</span>
-                </p>
-                <p> <span style="font-weight: 500;">Name:</span> <span>Admin </span></p>
-                <p><span style="font-weight: 500;">Email:</span> <span>admin@admin.com</span> </p>
-            </div>
-            <div class="fa_section">
-                <h1>Mobile App Authentication (2FA)</h1>
-                <p>Secure your account with TOTP two-factor authentication.</p>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#authenPopup">Setup 2FA</button>
-            </div>
-`
+// console.log("cooKie",cookieToken)
+
+
+// var authentication = document.getElementById('authentication')
+// authentication.innerHTML = `
+//  <div class="fa_section">
+//                 <i>Fly Protect</i>
+//                 <p style="margin-top: 20px;"> <span style="font-weight: 500;">Port:</span>
+//                     <span id="2fa_Ip">ed82D70-c3a2-45f5-a731-2388c745a697</span>
+//                 </p>
+//                 <p> <span style="font-weight: 500;">Name:</span> <span>Admin </span></p>
+//                 <p><span style="font-weight: 500;">Port:</span> <span id="2fa_port"></span> </p>
+//             </div>
+//             <div class="fa_section">
+//                 <h1>Mobile App Authentication (2FA)</h1>
+//                 <p>Secure your account with TOTP two-factor authentication.</p>
+//                 <button type="button" data-bs-toggle="modal" data-bs-target="#authenPopup">Setup 2FA</button>
+//             </div>
+// `
+
+$.getJSON('../conf/ui.conf', function (data) {
+    document.getElementById("user_name").innerHTML = payload.user
+    // Update inner HTML and value of the elements
+    document.getElementById('2fa_Ip').innerHTML = data.master.ip;
+    document.getElementById('2fa_port').innerHTML = data.master.port;
+
+    document.getElementById('button_2FA').addEventListener('click', function () {
+
+
+        // Extract token from cookie
+        let cookieToken = document.cookie
+        console.log(cookieToken)
+        // console.log("user", payload.user)
+
+        var ip2fa = data.master.ip;
+        var port2fa = data.master.port;
+        console.log('>>> IP', ip2fa)
+        console.log('>>> Port', port2fa)
+        axios.get(`https://${ip2fa}:${port2fa}/v1/master/generate-totp`, {
+            headers: {
+                token: cookieToken,
+                user: payload.user
+            }
+        })
+            .then(response => {
+                console.log('Response:', response.data);
+                const secret = extractSecret(response.data);
+                renderSecret(secret);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+
+    function extractSecret(uri) {
+        const url = new URL(uri.replace('otpauth://', 'https://'));
+        const params = new URLSearchParams(url.search);
+        const secret = params.get('secret');
+        return secret;
+    }
+
+    function renderSecret(secretKey) {
+        var secretElement = document.getElementById('secretKey');
+        secretElement.textContent = secretKey;
+        localStorage.setItem('key', secretKey)
+        var qrCodeImage = document.getElementById('qrCodeImage');
+        var text = `otpauth://totp/OwlH%20Master:admin?algorithm=SHA1&digits=6&issuer=OwlH%20Master&period=30&secret=${secretKey}`;
+        new QRCode(qrCodeImage, {
+            text: text,
+            width: 150,
+            height: 150,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    }
+
+})
 
 var popup = document.getElementById('authenPopup');
-        popup.innerHTML = `
+popup.innerHTML = `
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -182,14 +244,15 @@ var popup = document.getElementById('authenPopup');
                             </ol>
                         </div>
                         <div class="qr-code">
-                            <img src="https://via.placeholder.com/150" alt="QR Code">
+                            <div id="qrCodeImage"> </div>
                         </div>
                         <div class="secret-key">
-                            SecretKey: QR4XJIBVPBYNQRDYOHXI47BM
+                            SecretKey:  <span id="secretKey"></span>
                         </div>
                         <div class="verify-code">
                             <label for="auth-code">Verify Code</label>
                             <input type="text" id="auth-code" placeholder="Authentication Code">
+                            <div id="alert" style="text-align: center"></div>
                             <button id="verifyBtn">Verify & Activate</button>
                         </div>
                     </div>
@@ -200,10 +263,116 @@ var popup = document.getElementById('authenPopup');
             </div>
         `;
 
-        document.getElementById('verifyBtn').addEventListener('click', function() {
-            var toast = document.getElementById('authToast');
-            toast.className = "toast show";
-            setTimeout(function() {
-                toast.className = toast.className.replace("show", ""); 
-            }, 5000);
-        });
+
+
+
+
+$.getJSON('../conf/ui.conf', function (data) {
+    // TURN ON
+    document.getElementById('verifyBtn').addEventListener('click', function () {
+        var otp = document.getElementById("auth-code").value;
+        // console.log('OTP Entered:', otp);
+        if (otp.trim() === "") {
+            document.getElementById("alert").style.color = 'red';
+            document.getElementById("alert").innerHTML = "Please enter the OTP!";
+            return;
+        } else {
+            document.getElementById("alert").innerHTML = "";
+        }
+        var IP = data.master.ip;
+        var PORT = data.master.port;
+        var json2Fa = {};
+        json2Fa["OTP"] = otp;
+        var json = JSON.stringify(json2Fa);
+        const url = `https://${IP}:${PORT}/v1/master/verify-ontotp`;
+        axios({
+            method: 'post',
+            url: url,
+            headers: {
+                'token': document.cookie,
+                'user': payload.user
+            },
+            timeout: 30000,
+            withCredentials: true,
+            data: json
+        })
+            .then(response => {
+                console.log('Response received:', response.data);
+                document.getElementById("alert").style.color = 'green';
+                document.getElementById("alert").innerHTML = "Turn on 2FA successfully!";
+                var toast = document.getElementById('authToast');
+                toast.className = "toast show";
+                document.getElementById('button_2FA').style.display = 'none'
+                document.getElementById('button_2FA_OFF').style.display = 'block'
+                setTimeout(function () {
+                    toast.className = toast.className.replace("show", "");
+                    document.location.href = 'login.html';
+                }, 3000);
+            })
+            .catch(error => {
+                console.error("error", error)
+                document.getElementById("alert").style.color = 'red';
+                document.getElementById("alert").innerHTML = "Invalid OTP. Please try again.";
+            })
+
+    });
+
+
+    // Turn off
+    function stringToBoolean(str) {
+        return str.toLowerCase() === "true";
+    }
+    var otpVerify = localStorage.getItem('otp-verify')
+    console.log(stringToBoolean(otpVerify))
+    if (stringToBoolean(otpVerify)) {
+        document.getElementById('button_2FA').style.display = 'none'
+        document.getElementById('button_2FA_OFF').style.display = 'block'
+        document.getElementById('turnoff_input').style.display = 'block'
+        document.getElementById('button_2FA_OFF').addEventListener('click', function () {
+            var otp = document.getElementById("turnoff_input").value;
+            if(otp === ""){
+                document.getElementById('alert-2FA-off').innerHTML = 'Please enter your OTP!';
+                document.getElementById('alert-2FA-off').style.color = 'red';
+                return;
+            }
+            var token = document.cookie;
+            var user = payload.user;
+            var IP = data.master.ip;
+            var PORT = data.master.port;
+            var jsonTurnoff = {};
+            jsonTurnoff["OTP"] = otp;
+            var json = JSON.stringify(jsonTurnoff);
+            var url = `https://${IP}:${PORT}/v1/master/turn-off-2fa`;
+            axios({
+                method: 'post',
+                url: url,
+                headers: {
+                    'token': token,
+                    'user': user
+                },
+                timeout: 30000,
+                withCredentials: true,
+                data: json
+            })
+                .then(response => {
+                    console.log("response", response);
+                    localStorage.removeItem('otp-verify');
+                    localStorage.removeItem('user');
+                    document.getElementById('alert-2FA-off').innerHTML = 'Disabled 2FA successfully !!';
+                    document.getElementById('alert-2FA-off').style.color = '#00FF00';
+                     document.getElementById('button_2FA').style.display = 'block'
+                document.getElementById('button_2FA_OFF').style.display = 'none'
+                    setTimeout(() => {
+                        document.location.href = 'index.html';
+                    }, 1500)
+                })
+                .catch(error => {
+                    console.error("error", error)
+                    document.getElementById('alert-2FA-off').innerHTML = 'Invalid OTP!';
+                    document.getElementById('alert-2FA-off').style.color = 'red';
+                })
+        })
+    }
+});
+
+

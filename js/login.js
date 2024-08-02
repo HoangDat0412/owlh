@@ -6,9 +6,9 @@ function loadJSONdata() {
             alert.innerHTML = alert.innerHTML + '<div class="alert alert-danger alert-dismissible fade show">' +
                 '<strong>Master IP Error!</strong> Please, change your master IP at /var/www/owlh/conf/ui.conf.' +
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-                    '<span aria-hidden="true">&times;</span>' +
+                '<span aria-hidden="true">&times;</span>' +
                 '</button>' +
-            '</div>';
+                '</div>';
             setTimeout(function () { $(".alert").alert('close') }, 30000);
         }
         var ipLoad = document.getElementById('ip-master');
@@ -20,12 +20,12 @@ function loadJSONdata() {
         CheckDefaultCredentials();
 
         // Add event listeners for Enter key
-        document.getElementById('owlh-input-user').addEventListener('keydown', function(event) {
+        document.getElementById('owlh-input-user').addEventListener('keydown', function (event) {
             if (event.keyCode === 13) {
                 Login();
             }
         });
-        document.getElementById('owlh-input-psswd').addEventListener('keydown', function(event) {
+        document.getElementById('owlh-input-psswd').addEventListener('keydown', function (event) {
             if (event.keyCode === 13) {
                 Login();
             }
@@ -72,41 +72,53 @@ function Login() {
         withCredentials: true,
         data: userLogin
     })
-    .then(function (response) {
-        console.log(response.data);
-        progressBar.style.display = "none";
-        progressBarDiv.style.display = "none";
-        if (response.data.ack != "false") {
-            document.cookie = response.data;
-            document.location.href = 'index.html';
-        } else {
+        .then(function (response) {
+            console.log(response.data)
+            progressBar.style.display = "none";
+            progressBarDiv.style.display = "none";
+            
+            if (response.data.ack != "false") {
+                console.log(" >>>>> response", response.data);
+                document.cookie = response.data;
+                document.location.href = 'index.html';
+                if (response.data === 'Please verify your OTP') {
+                    document.location.href = 'verify.html';
+                    const inputValue = document.getElementById('owlh-input-user').value;
+                    localStorage.setItem('user', inputValue);
+                }
+            }
+            else {
+                $('html,body').scrollTop(0);
+                var alert = document.getElementById('floating-alert');
+                alert.innerHTML = alert.innerHTML + '<div class="alert alert-danger alert-dismissible fade show">' +
+                    '<strong>Login Error!</strong> Incorrect username or password.' +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                    '<span aria-hidden="true">&times;</span>' +
+                    '</button>' +
+                    '</div>';
+                setTimeout(function () { $(".alert").alert('close') }, 30000);
+            }
+        })
+        .catch(function (error) {
+            // document.getElementById('check-status-login').style.display = 'block';
+            document.getElementById('alert_login').innerHTML = 'Password Incorrect!';
+            document.getElementById('alert_login').style.color = 'red';
+            progressBar.style.display = "none";
+            progressBarDiv.style.display = "none";  
             $('html,body').scrollTop(0);
             var alert = document.getElementById('floating-alert');
             alert.innerHTML = alert.innerHTML + '<div class="alert alert-danger alert-dismissible fade show">' +
-                '<strong>Login Error!</strong> Incorrect username or password.' +
+                '<strong>Login Error!</strong> Master connection error. Please check the Master API connection.' +
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-                    '<span aria-hidden="true">&times;</span>' +
-                '</button>' +
-            '</div>';
-            setTimeout(function () { $(".alert").alert('close') }, 30000);
-        }
-    })
-    .catch(function (error) {
-        document.getElementById('check-status-login').style.display = 'block';
-        progressBar.style.display = "none";
-        progressBarDiv.style.display = "none";
-        $('html,body').scrollTop(0);
-        var alert = document.getElementById('floating-alert');
-        alert.innerHTML = alert.innerHTML + '<div class="alert alert-danger alert-dismissible fade show">' +
-            '<strong>Login Error!</strong> Master connection error. Please check the Master API connection.' +
-            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
                 '<span aria-hidden="true">&times;</span>' +
-            '</button>' +
-        '</div>';
-        setTimeout(function () { $(".alert").alert('close') }, 30000);
-        document.cookie = "";
-    });
+                '</button>' +
+                '</div>';
+            setTimeout(function () { $(".alert").alert('close') }, 30000);
+            document.cookie = "";
+        });
 }
+
+
 
 // Call loadJSONdata to initialize the process
 loadJSONdata();

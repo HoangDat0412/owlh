@@ -1294,3 +1294,4 @@ function syncRulesetModal(node, name){
     .catch(function (error) {
     });
 }
+
